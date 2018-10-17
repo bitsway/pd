@@ -534,9 +534,11 @@ function homePage() {
 		
 		$.afui.loadContent("#pageHome",true,true,'right');
 	//}
+	
+	
+	//$("#error_login").html('');
+	//$.afui.loadContent("#pageHome",true,true,'right');
 }
-
-//=================Shima start 17/10/20108===========
 function page_market() {
 	//alert (localStorage.tourFlag)
 	if (localStorage.tourFlag==1){
@@ -580,8 +582,6 @@ function page_visit() {
 	$("#wait_image_visit_submit").hide();
 	$.afui.loadContent("#page_visit",true,true,'right');
 }
-
-//=================Shima end 17/10/20108===========
 function page_visit_doc() {
 	
 	if (localStorage.doctor_flag==1 && localStorage.cTeam==1) {addMarketListCteam();}else{addMarketList();}
@@ -1524,14 +1524,14 @@ function afterSync(){
 		localStorage.op_Y=''
 		localStorage.op_Z=''
 		localStorage.opProductStr=''
-		//location.reload()
+		location.reload()
 }
 function check_user() {	
-//alert('ds')
 	var cid=$("#cid").val().toUpperCase();
 	cid=$.trim(cid);
 	
    // var apipath_base_photo_dm ='http://127.0.0.1:8000/skfah/syncmobile/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	
 	var apipath_base_photo_dm ='http://w02.yeapps.com/pd/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	var user_id=$("#user_id").val();
@@ -1548,17 +1548,18 @@ function check_user() {
 		$("#doctorButton").hide();
 		$("#wait_image_login").show();
 		$("#error_logintext").val(apipath_base_photo_dm);
-		$.ajax(apipath_base_photo_dm,{
-								
+		//alert (apipath_base_photo_dm)
+		$.ajax(apipath_base_photo_dm,{			
 			type: 'POST',
 			timeout: 30000,
-			error: function(xhr) {
+			error: function(status,xhr) {
+			//alert (status)	
 			$("#wait_image_login").hide();
 			$("#loginButton").show();
 			$("#error_login").html('Network Timeout. Please check your Internet connection..1');
-													},
+			},
 			success:function(data, status,xhr){
-	
+			//alert (status)
 			if (status=='success'){
 				localStorage.base_url='';
 				
@@ -1604,7 +1605,7 @@ function check_user() {
 							
 							localStorage.sync_date=today;
 							
-							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+						//	alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 						
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 								
@@ -1632,14 +1633,7 @@ function check_user() {
 													localStorage.productListStr=resultArray[4];
 													localStorage.rep_name=resultArray[5];
 													
-														//=================Shima start 17/10/20108===========
-													localStorage.marketListStr=resultArray[6];
-													localStorage.market_client=resultArray[7];
-													localStorage.cl_catStr=resultArray[8]
 													
-													localStorage.cl_subcatStr=resultArray[9]
-													
-														//=================Shima end 17/10/20108===========
 													var companyListShow=''
 													var company_i_Show=''
 													var company_name=''
@@ -1655,11 +1649,9 @@ function check_user() {
 														
 														var companyValueArray = companyValueArray1[0];
 														var company_id = companyValueArray1[1];
-														
-														//=================Shima start 17/10/20108===========
-														companyListShow=companyListShow+'<li class="name"><a style="font-weight:bold" onClick="companyWsproduct(\''+input_id+'\')">'+companyValueArray+'</a></li>'
 													
-														//=================Shima end 17/10/20108===========
+														companyListShow=companyListShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;font-weight:bold;font-size:15px;"><a onClick="companyWsproduct(\''+input_id+'\')"><font class="name" style="font-size:18; font-weight:bold">'+companyValueArray+'</a></font></td></tr></table></li>'
+													
 														company_i_Show=company_i_Show+'<input  name="'+input_id+'" id="'+input_id+'" value="'+companyValueArray+'" type="hidden">'
 												
 														company_id=company_id+'<input  name="'+input_id+'" id="'+input_id+'" type="hidden">'
@@ -1695,54 +1687,6 @@ function check_user() {
 													localStorage.pr_B=pr_B
 													localStorage.pr_C=pr_C
 													localStorage.pr_D=pr_D
-													
-													//=================Shima start 17/10/20108===========
-													var planMarketList = localStorage.marketListStr.split('<rd>');
-													var planMarketListShowLength=planMarketList.length	
-													
-													var visitPlanMarketComb=''								
-													var profileMarketComb='';								
-													var unscheduleMarketComb='';
-													var unscheduleMarketComb_tr=''
-													
-													for (var k=0; k < planMarketListShowLength; k++){
-														var planMarketValueArray = planMarketList[k].split('<fd>');
-														planMarketID=planMarketValueArray[0];
-														planMarketName=planMarketValueArray[1];
-														marketID=planMarketID
-														marketName=planMarketName
-														var marketNameID=planMarketName+'|'+planMarketID;
-														//alert (marketNameID);
-														if(planMarketID!=''){
-															unscheduleMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="marketNextLV(\''+marketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+marketNameID+'</a></font></li>';
-															
-															visitPlanMarketComb+='<li  style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;height=15px" onClick="check_boxTourTrue(\''+marketID+'\')"> '+'<table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;">'+'<tr style="border-bottom:1px solid #D2EEE9;"><td width="60px" style="text-align:center; padding-left:5px;"><input class="docCampaign" type="checkbox" onClick="getDocTour_keyup(\''+marketID+'\')" name="doc_tour'+marketID+'" value="checkbox" id="doc_tour'+marketID+'"><label for="doc_camp'+marketID+'"></br></label></td><td  style="text-align:left;">'+'</br><font id="'+ marketID +'" onClick="check_boxTourTrue(\''+marketID+'\')" class="name" >'+ marketNameID+'</font></td></tr>'+'</table>'+'</li>';
-															
-															profileMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin;height:15px"><a onClick="marketNextCProfileLV(\''+marketNameID+'\')"><font class="name" style="font-size:12; font-weight:bold; color:#306161">'+marketNameID+'</font></a></li>';
-															
-															unscheduleMarketComb_tr+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="summary_report_doctor_tr(\''+marketNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+marketNameID+'</a></font></li>';
-															
-															}
-													}
-													
-																				
-													localStorage.visit_plan_marketlist_combo=visitPlanMarketComb;								
-													localStorage.unschedule_market_cmb_id=unscheduleMarketComb;
-													localStorage.market_cmb_list_cp=profileMarketComb;							
-
-
-													localStorage.visit_plan_marketlist_combo_tr=unscheduleMarketComb_tr;
-													$('#market_combo_id_lv_tr').empty();
-													$('#market_combo_id_lv_tr').append(localStorage.visit_plan_marketlist_combo_tr);							
-													
-													$('#market_combo_id_lv').empty();
-													$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
-													
-													//$('#tour_market_combo_id_lv').empty();
-													//$('#tour_market_combo_id_lv').append(localStorage.visit_plan_marketlist_combo);
-													
-													//=================Shima end 17/10/20108===========
-													
 													$.afui.loadContent("#pageHome",true,true,'right');
 											
 													
@@ -1766,7 +1710,8 @@ function check_user() {
 }
 			
 }//Function
-//=================Shima 17/10/20108===========
+
+ //=================Shima End===========
  
  
 function setScheduleDate(scheduleDate){
@@ -1818,6 +1763,8 @@ function chemist_visit() {
 	
 }
 function saved_visit() {
+	
+	//$("#doc_start").html('Visit > Market > Chemist');
 	localStorage.saved_data_submit=0;
 	$.afui.loadContent("#page_saved_visit",true,true,'right');
 
@@ -1830,7 +1777,9 @@ function chemist_profile() {
 	//$("#v_path").html('<font style="font-weight:bold; font-size:13px; color:#666">Visit > Market > Chemist</font>');
 	localStorage.doctor_flag=0;
 	
+	
 	localStorage.saved_data_submit=0;
+	//addMarketListCp();
 	
 	
 }
@@ -2603,6 +2552,10 @@ function addMarketListDoctor() {
 	$('#market_combo_id_lv').empty();
 	$('#market_combo_id_lv').append(unschedule_market_combo_list);
 	
+	//$('#market_combo_id_lv').empty();
+//	$('#market_combo_id_lv').append(localStorage.unschedule_market_cmb_id);
+	//alert (unschedule_market_combo_list)
+	
 	$.afui.loadContent("#page_market",true,true,'right');
 
 }
@@ -2657,7 +2610,10 @@ function showSubmitDocShow(){
 							
 						}
 						  
-				 });
+				 });//end ajax
+			//$("#wait_image_route_pendingTour").hide();	 
+			//$.afui.loadContent("#page_tour_rep_pending",true,true,'right');	
+//	alert ('sdasf')
 	
 }
 
@@ -3362,7 +3318,6 @@ function marketNextLV(lvalue) {
 }
 
 function marketNext() {
-	
 	$("#unscheduled_m_client_combo_id").val('');
 	
 	market_name=$("#unschedule_market_combo_id").val();
@@ -3426,9 +3381,7 @@ function marketNext() {
 							
 							if(mClientID!=''){
 
-									<!--unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></table></li>';-->
-									
-									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><a><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></table></li>';
+									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></table></li>';
 							}
 						 }
 					
@@ -3560,8 +3513,8 @@ function marketNext_sup() {
 										var mClientID=mClientValueArray[0];
 										var mClientName=mClientValueArray[1];
 										var mClientCat=mClientValueArray[2];
-										/*unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></tr></table></li>'	*/
-										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></tr></table></li>'
+										unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></tr></table></li>'	
+										//unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+mClientName+'|'+mClientID+','+mClientCat+'</font></a></li>';
 									}
 								
 								
@@ -4563,8 +4516,6 @@ function req_page(){
 }
 	
 function companyWsproduct(k){
-	$("#unschedule_market_combo_id").val(k);
-	
 	$('#show_data').html('')
 	var input_id=k.toString()
 	
@@ -4574,12 +4525,8 @@ function companyWsproduct(k){
 	
 	var company_name = comStr.split('<fdfd>')[0];
 	var company_id = comStr.split('<fdfd>')[1];
-	if (company_id!=localStorage.company_id){localStorage.prouct_stringSubmit=''}
-	
 	localStorage.company_name=company_name
 	localStorage.company_id=company_id
-	
-	
 
 
 	if(input_id=='0'){
@@ -4595,9 +4542,7 @@ function companyWsproduct(k){
 			var c_Qt='cQt_'+p.toString()
 			
 			var productValueArray1 = proList[p];
-			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productName+'</td></tr></table></li>'
-			//=================Shima 17/10/20108===========
+			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:10%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productName+'</td></tr></table></li>'
 			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'	
 			product_name=product_name+'<input  name="'+productName+'" id="'+productName+'" type="hidden">'	
 							
@@ -4617,10 +4562,8 @@ function companyWsproduct(k){
 			var product_p='prId_'+p.toString()
 			var p_Qt='pQt_'+p.toString()
 			var c_Qt='cQt_'+p.toString()
-			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'
-			//=================Shima 17/10/20108===========	
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productValueArray1+'</td></tr></table></li>'
-			//=================Shima 17/10/20108===========
+			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'	
+			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:10%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productValueArray1+'</td></tr></table></li>'
 			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'									
 		}
 		
@@ -4641,9 +4584,8 @@ function companyWsproduct(k){
 			var p_Qt='pQt_'+p.toString()
 			var c_Qt='cQt_'+p.toString()
 			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'		
-			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productValueArray1+'</td></tr></table></li>'
-			//=================Shima 17/10/20108===========								
+			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:10%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productValueArray1+'</td></tr></table></li>'
+											
 		}
 		localStorage.productListShow=productListShow
 		$('#product_ul_list').empty()
@@ -4661,11 +4603,9 @@ function companyWsproduct(k){
 			var product_p='prId_'+p.toString()
 			var p_Qt='pQt_'+p.toString()
 			var c_Qt='cQt_'+p.toString()
-			
 			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'	
-			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productValueArray1+'</td></tr></table></li>'
-		//=================Shima 17/10/20108===========									
+			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:10%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:10%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productValueArray1+'</td></tr></table></li>'
+		//alert(productListShow)									
 		}
 		localStorage.productListShow=productListShow
 		$('#product_ul_list').empty()
@@ -4716,10 +4656,9 @@ function getCart(){
 			prouct_stringSubmit=prouct_stringSubmit+pr_id+'<fd>'+pr_name+'<fd>'+get_pcs_val+'<fd>'+get_crtn_val+'<rd>'
 			
 			show_data=show_data+'<input  name="'+showData_id+'" id="'+showData_id+'" type="hidden" value="'+pr_name+'">'
-			//=================Shima 17/10/20108===========
-			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%;">'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:15%">'+get_crtn_val+'<td>'+pr_name+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
-			/*show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" readonly style="background-color:#CCC;color:#fff;" value="'+get_pcs_val+'"/></td><td style="width:15%"><input type="number" name="'+cQty+'" id="'+cQty+'" readonly style="background-color:#CCC;color:#fff;" value="'+get_crtn_val+'"/></td><td>'+pr_name+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'*/
-		//=================Shima 17/10/20108===========
+			
+			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:10%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" value="'+get_pcs_val+'"/></td><td style="width:10%"><input type="number" name="'+cQty+'" id="'+cQty+'" style="color:#000;" value="'+get_crtn_val+'"/></td><td>'+pr_name+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
+		
 		}
 	}
 	
@@ -4729,10 +4668,7 @@ function getCart(){
 	$('#show_data').html(localStorage.show_data);
 }
 function cartPage(){
-	var prouct_stringSubmit=localStorage.prouct_stringSubmit
-	//alert (prouct_stringSubmit.length)
-	if (prouct_stringSubmit.length >10) {$.afui.loadContent("#cart_page",true,true,'right');}
-	
+	$.afui.loadContent("#cart_page",true,true,'right');
 	getCart()
 
 }
@@ -4761,7 +4697,7 @@ function submit_page(){
 
 function submit_data(){
 	
-	//alert(localStorage.base_url+'dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit)
+	alert(localStorage.base_url+'dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit)
 	
 	$.ajax(localStorage.base_url+'dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit,{
 			type:'POST',
@@ -8336,24 +8272,24 @@ function set_save_data(i){
 }
 
 
+
+
+
 //-----------------------------Visit Save End
 
 //-----------------Search---------------
-function searchCompany() {
-	
+function searchMarket() {
 	var filter  = $("#unschedule_market_combo_id").val().toUpperCase();
-    //alert (filter)
-	 var lis =document.getElementById("req_ul_list").getElementsByTagName("li");
-	// alert (lis)
+	//alert (filter);
+	 var lis =document.getElementById("market_combo_id_lv").getElementsByTagName("li");
+
 	for (var i = 0; i < lis.length; i++) {
 		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
-	//alert (name)
-		if (name.toUpperCase().indexOf(name)!= -1){
-			
+		//alert (name)
+		if (name.toUpperCase().indexOf(filter) == 0) 
 			lis[i].style.display = 'list-item';
-		}else{
+		else
 			lis[i].style.display = 'none';
-	}
 	}
 }
 
@@ -8365,7 +8301,7 @@ function searchSubmitRoute() {
 		//alert ('Nadira')
 		for (var i = 0; i < lis.length; i++) {
 			var name = lis[i].getElementsByClassName('name')[0].innerHTML;
-			
+			//alert (name)
 			if (name.indexOf(filter) != -1) 
 				lis[i].style.display = 'list-item';
 			else
@@ -10714,14 +10650,13 @@ function page_addMicro() {
 
 	$.afui.loadContent("#page_micro_add",true,true,'right');
 }
-
-
 //====================Doctor Add
 function page_addDoc() {
 	 $("#myerror_doctor_add").html('' )
 	 $("#wait_image_docAdd").hide();
 	 $("#btn_submit_doc_add").show();
 	var market_Id=localStorage.visit_market_show.split('|')[1];
+	//alert (localStorage.visit_market_show)
 	//	===================CtStr, Spciality=========						
 	var dCategory=localStorage.catStr											
 	catList=dCategory.split(',')
@@ -11621,7 +11556,6 @@ function holidaySubmit() {
 	//$.mobile.navigate(url);	
 }
 
-//=================Shima start 17/10/20108===========
 function chemist_add() {	
 	$(".market").html(localStorage.visit_market_show);
 	document.getElementById('myImagechAdd').src = '';
@@ -11629,40 +11563,31 @@ function chemist_add() {
 	$("#chemist_add").val("");
 	$("#chemist_ph").val("");
 	
+	
 	cl_catStr=localStorage.cl_catStr
 	cl_subcatStr=localStorage.cl_subcatStr
 	
-	cl_catStrList=cl_catStr.split('<rd>')
+	cl_catStrList=cl_catStr.split(',')
 	$('#addCCategory').empty();
 	
-	for (var j=0; j < cl_catStrList.length; j++){
-		cat_type_id = cl_catStrList[j].split('<fd>')[0]
-        cat_type_name = cl_catStrList[j].split('<fd>')[1]
-		
-		var opt='<option value="'+cat_type_id+'|'+cat_type_name+'">'+cat_type_id+'|'+cat_type_name+'</option>'
+	for (var j=0; j < cl_catStrList.length-1; j++){
+		var opt='<option value="'+cl_catStrList[j]+'">'+cl_catStrList[j]+'</option>'
 		 $('#addCCategory').append(opt);
 		
 	}
-	cl_subcatStrList=cl_subcatStr.split('<rd>')
-	$('#addSubCategory').empty();
 	
-	for (var k=0; k < cl_subcatStrList.length; k++){
-		Subcat_type_id = cl_subcatStrList[k].split('<fd>')[0]
-        Subcat_type_name = cl_subcatStrList[k].split('<fd>')[1]
+	cl_subcatStrList=cl_subcatStr.split(',')
+	$('#addSubCategory').empty();
+	for (var j=0; j < cl_subcatStrList.length-1; j++){
+		var opt='<option value="'+cl_subcatStrList[j]+'">'+cl_subcatStrList[j]+'</option>'
+		$('#addSubCategory').append(opt);
 		
-		var opt='<option value="'+Subcat_type_id+'|'+Subcat_type_name+'">'+Subcat_type_id+'|'+Subcat_type_name+'</option>'
-		
-		
-	$('#addSubCategory').append(opt);
 	}
 	$('#wait_image_chemAdd').hide();
 	$('#chSButton').show();
 	
 	$.afui.loadContent("#page_chemist_add",true,true,'right');
 }
-
-
-//=================Shima end 17/10/20108===========
 function chemist_pending() {	
 	$(".market").html(localStorage.visit_market_show);
 	var marketId=(localStorage.visit_market_show).split('|')[1]
@@ -11838,56 +11763,63 @@ function chemist_reject(row_id){
 function page_businessVolume() {	
 	$.afui.loadContent("#page_businessVolume",true,true,'right');
 }
-
-//=================Shima start 17/10/20108===========
 function chemist_submit() {	
 	$(".market").html(localStorage.visit_market_show);
 	document.getElementById('myImagechAdd').src = '';
 	var market_Id=localStorage.visit_market_show.split('|')[1];
 	var visitDocId=localStorage.visit_client.split('|')[1]	
+	
+	
 	var ChemistName=$("#addCName").val()
 	var Address_Line_1=$("#addClAddress").val()
 	var district=$("#addCDist").val()
 	var thana=$("#addCThana").val()
 	var RegistrationNo=$("#addCRegNo").val()
-	var nid=$("#addCNid").val()
+	var NID=$("#addCNid").val()
 	var Contact_Name=$("#addCContactName").val()
 	var Contact_phone=$("#addCPhone").val()
 	var Category=$("#addCCategory").val()
-	var subCategory=$("#addSubCategory").val()
-	var dob=$("#addCDOB").val()
+	
+	var SubCategory=$("#addSubCategory").val()
+	var DOB=$("#addCDOB").val()
 	var Cash_Credit=$("#addCCash_Credit").val()
 	var Credit_Limit=$("#addCCreditLimit").val()
 	var Status=$("#addCStatus").val()
-	//var NumberofDoc=$("#addCNumberofDoc").val()
-	//var AvgPatientPerDay=$("#addCAvgPatientPerDay").val()
-
+	var NumberofDoc=$("#addCNumberofDoc").val()
+	var AvgPatientPerDay=$("#addCAvgPatientPerDay").val()
+	
+	
 	var imageText="chAddPhoto"
 	var chPhoto=$("#"+imageText).val();
 	var now = $.now();
 	var imageName='ch_'+localStorage.user_id+now.toString()+'.jpg';	
-	
+	//alert (imageName)
 	ChemistName=ChemistName.replace(",","").replace("'","").replace(";","").replace('"','')
 	var error_flag=0
+	//alert ('Address_Line_1: '+Address_Line_1)
 	
 	
 	if  ((Address_Line_1=='') || (Contact_Name=='' ) ||  (Contact_phone=='') || (Category=='') || (SubCategory='') || (Cash_Credit=='') || (Credit_Limit=='')){
 		error_flag=1
-		}	
+		}
+	//alert (error_flag)	
 	if (error_flag==1){
 		 $("#wait_image_chemAdd").hide();
 		 $("#chSButton").show();
 		$("#error_chemist_add_page").html('Please complete required fields' )
 	}
 	else{
+		
+			// ajax-------
 	
 		$("#wait_image_chemAdd").show();
 		$("#chSButton").hide();
-		//alert ( localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&ChemistName='+encodeURI(ChemistName)+'&Address_Line_1='+encodeURI(Address_Line_1)+'&RegistrationNo='+encodeURI(RegistrationNo)+'&nid='+encodeURI(nid)+'&Contact_Name='+Contact_Name+'&Contact_phone='+encodeURI(Contact_phone)+'&Category='+encodeURI(Category)+'&subCategory='+encodeURI(subCategory)+'&dob='+encodeURI(dob)+'&Cash_Credit='+encodeURI(Cash_Credit)+'&Credit_Limit='+encodeURI(Credit_Limit)+'&Status='+encodeURI(Status));
+		//alert (localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&ChemistName='+ChemistName+'&Address_Line_1='+Address_Line_1+'&district='+district+'&thana='+thana+'&RegistrationNo='+RegistrationNo+'&NID='+NID+'&Contact_Name='+Contact_Name+'&Contact_phone='+Contact_phone+'&Category='+Category+'&SubCategory='+SubCategory+'&DOB='+DOB+'&Cash_Credit='+Cash_Credit+'&Credit_Limit='+Credit_Limit+'&Status='+Status+'&imageName='+imageName);
 		
+		// ajax-------
 				$.ajax({
 					 type: 'POST',
-					 url: localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&ChemistName='+encodeURI(ChemistName)+'&Address_Line_1='+encodeURI(Address_Line_1)+'&RegistrationNo='+encodeURI(RegistrationNo)+'&nid='+encodeURI(nid)+'&Contact_Name='+Contact_Name+'&Contact_phone='+encodeURI(Contact_phone)+'&Category='+encodeURI(Category)+'&subCategory='+encodeURI(subCategory)+'&dob='+encodeURI(dob)+'&Cash_Credit='+encodeURI(Cash_Credit)+'&Credit_Limit='+encodeURI(Credit_Limit)+'&Status='+encodeURI(Status)+'&imageName='+encodeURI(imageName)
+					 url: localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&route='+market_Id+'&ChemistName='+encodeURI(ChemistName)+'&Address_Line_1='+encodeURI(Address_Line_1)+'&district='+encodeURI(district)+'&thana='+encodeURI(thana)+'&RegistrationNo='+encodeURI(RegistrationNo)+'&NID='+encodeURI(NID)+'&Contact_Name='+Contact_Name+'&Contact_phone='+encodeURI(Contact_phone)+'&Category='+encodeURI(Category)+'&SubCategory='+encodeURI(SubCategory)+'&DOB='+encodeURI(DOB)+'&Cash_Credit='+encodeURI(Cash_Credit)+'&Credit_Limit='+encodeURI(Credit_Limit)+'&Status='+encodeURI(Status)+'&NumberofDoc='+encodeURI(NumberofDoc)+'&AvgPatientPerDay='+encodeURI(AvgPatientPerDay)+'&imageName='+encodeURI(imageName)
 
 ,
 					 success: function(result) {
@@ -11922,12 +11854,10 @@ function chemist_submit() {
 	
 	}
 	
+	
+
+	//$.afui.loadContent("#page_chemist_add",true,true,'right');
 }
-
-//=================Shima end 17/10/20108===========
-
-
-
 
 //=================BV===================
 function bvSubmit() {	

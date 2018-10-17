@@ -40,8 +40,6 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
   eval(targ+".location='"+selObj.options[selObj.selectedIndex].value+"'");
   if (restore) selObj.selectedIndex=0;
 }
-
-
      </script>
 	 <style>
 		.bgc{
@@ -154,10 +152,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                             	</div>
                             </td>
                             <td>
-                            <div id="chSaveDiv" align="center"  style="width:100%; background-color:#09C; "><img onClick="chemist_visit();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="chemist_visit_1.png"> </div>
-                            
-                            	<!--<div id="chSaveDiv" align="center"  style="width:100%; background-color:#09C; "><img onClick="" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="chemist_visit.png"> </div>
+                            <!--<div id="chSaveDiv" align="center"  style="width:100%; background-color:#09C; "><img onClick="chemist_visit();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="chemist_visit.png"> </div>
                             -->
+                            	<div id="chSaveDiv" align="center"  style="width:100%; background-color:#052F74; "><img onClick="" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="chemist_visit_1.png" > </div>
+                            
                            </td>
                         </tr>
                         <!-- =================Shima End===========-->
@@ -285,7 +283,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center"><font style="font-size:18px; font-weight:bold"><div><input type="text" id="unschedule_market_combo_id" style="width:100%; color:#000" placeholder="Search" onKeyUp="searchCompany()"  /></div></font></td>
+            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"><input type="text" id="unschedule_market_combo_id" style="width:100%; color:#000" placeholder="Search" onKeyUp="searchMarket()"  /></div></font></td>
             <td width="10%" >&nbsp;</td> 
           </tr>
         </table>
@@ -294,7 +292,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             <div class="panel" id="requisition_page" style="background-color:#EDFEED">
             </br></br></br>
              <div id="error_login" style="color:#C00"></div> 
-            	<ul class="name list" id="req_ul_list"  style="background-color:#EDFEED">
+            	<ul class="list" id="req_ul_list"  style="background-color:#EDFEED">
                
                 </ul>
             </div>
@@ -416,10 +414,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
     
     
-<!-- =================Shima start 17/10/2018===========-->
     
   <!--//==============================Market Next Page=================-->
-       <div class="view" id="page_market_retView">
+      <!-- <div class="view" id="page_market_retView">
         <div class="pages">
          <header> 
          <table width="100%" border="0">
@@ -456,17 +453,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
         
 		<a onClick="homePage()" class="icon home" ></a>
-        <a id="addMicro" name="addMicro" onClick="chemist_add()"  > <img style="height:30px; width:30px" src="add_2.png"></a>
         
-        <!-- <a id="addMicro" name="addMicro" onClick="page_addMicro()"  > <img style="height:30px; width:30px" src="add_2.png"></a>-->
+         <a id="addMicro" name="addMicro" onClick="page_addMicro()"  > <img style="height:30px; width:30px" src="add_2.png"></a>
       
       
-       <!-- <a id="addDocanc" name="addDocanc" onClick="page_addDoc()"  > <img style="height:50px; width:50px" src="doctor_add.png"></a>
-        <a href="#" id="blankAnc" name="blankAnc" onclick="$.afui.drawer.show('#rightD','right','push')"  ><img style="height:40px; width:40px" src="menu.png"></a>-->
+        <a id="addDocanc" name="addDocanc" onClick="page_addDoc()"  > <img style="height:50px; width:50px" src="doctor_add.png"></a>
+        <a href="#" id="blankAnc" name="blankAnc" onclick="$.afui.drawer.show('#rightD','right','push')"  ><img style="height:40px; width:40px" src="menu.png"></a>
        
          </footer>
 		
-        <!--<nav id="rightD" style="z-index:5; background-color:#FFF">
+        <nav id="rightD" style="z-index:5; background-color:#FFF">
             <div class="view active" id="navView2">
                 <header>
                     <h1></h1>
@@ -477,11 +473,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 </br></br>
                  <div  align="center" onClick="chemist_pending()"> <img style="height:150px; width:150px" src="PendingCustomerApproval.png"></div>
             </div>
-        </nav>-->
+        </nav>
         
-    </div>               
-  
-<!-- =================Shima end 17/10/2018===========-->                    
+    </div> -->              
+                      
   <!-- ==================================Tr Report============================-->
           <div class="view" id="page_market_trView">
         <div class="pages">
@@ -4164,6 +4159,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td><textarea name="addClAddress" id="addClAddress"  rows="3" placeholder="Address"></textarea>
                     </td>
                   </tr>
+                  <tr> 
+                  <td>Dist </td>
+                    <td>:</td>
+                    <td><input type="text" name="addCDist"   id="addCDist" placeholder="Dist" readonly  style="background-color:#CCC"></td>
+                  </tr>
+                  <tr>
+                    <td>Thana </td>
+                    <td>:</td>
+                    <td><input type="text" name="addCThana"   id="addCThana" placeholder="Thana"  readonly style="background-color:#CCC"></td>
+                  </tr>
                   <tr>
                     <td>RegistrationNo </td>
                     <td>:</td>
@@ -4212,7 +4217,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                      <td>:</td>
                     <td>
                     	<input type="number" name="addCCreditLimit"  maxlength="50"  id="addCCreditLimit" placeholder="Credit Limit"  >
-                     
+                                     
+                    
                  
                    </td>
                   </tr>
@@ -4230,7 +4236,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                    </td>
                   </tr>
                    
-				<!--<tr>
+                 
+               
+				<tr>
                     <td>NumberofDoc</td>
                      <td>:</td>
                     <td>
@@ -4249,7 +4257,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <input type="hidden" name="addCStatus"  maxlength="50"  id="addCStatus" value="SUBMITTED" >
                  
                    </td>
-                  </tr>-->
+                  </tr>
  
                 </table>
                 
@@ -5855,4 +5863,4 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
 </body>
 
-</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+</html>>>>>>>>>>>>>>>>>>>>>>>
