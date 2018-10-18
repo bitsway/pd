@@ -4605,7 +4605,7 @@ function companyWsproduct(k){
 			
 			var productValueArray1 = proList[p];
 			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productName+'</td></tr></table></li>'
+			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td>'+productName+'</td></tr></table></li>'
 			//=================Shima 17/10/20108===========
 			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'	
 			product_name=product_name+'<input  name="'+productName+'" id="'+productName+'" type="hidden">'	
@@ -4726,7 +4726,7 @@ function getCart(){
 			
 			show_data=show_data+'<input  name="'+showData_id+'" id="'+showData_id+'" type="hidden" value="'+pr_name+'">'
 			//=================Shima 17/10/20108===========
-			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%;">'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:15%">'+get_crtn_val+'<td>'+pr_name+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
+			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%">'+get_crtn_val+'</td><td style="width:15%;">'+get_pcs_val+'&nbsp;&nbsp;</td><td>'+pr_name+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
 			/*show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" readonly style="background-color:#CCC;color:#fff;" value="'+get_pcs_val+'"/></td><td style="width:15%"><input type="number" name="'+cQty+'" id="'+cQty+'" readonly style="background-color:#CCC;color:#fff;" value="'+get_crtn_val+'"/></td><td>'+pr_name+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'*/
 		//=================Shima 17/10/20108===========
 		}
