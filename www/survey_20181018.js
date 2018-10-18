@@ -31,14 +31,6 @@ var  apipath ='http://127.0.0.1:8000/skfah/'
         $.afui.launch();
 		//localStorage.prProdID_Str='';
 		//alert('Local : '+ localStorage.prProdID_Str);
-		if (localStorage.synced=='YES'){
-			$("#cid").val(localStorage.cid);
-			$("#user_id").val(localStorage.user_id);
-			$("#user_pass").val(localStorage.user_pass);
-
-			$.afui.loadContent("#pageHome",true,true,'right');
-			
-		}
 		
 		localStorage.location_error=''
 		$("#wait_image_login").hide();
@@ -118,7 +110,7 @@ var  apipath ='http://127.0.0.1:8000/skfah/'
 		$("#item_combo_id").val('A')
 		searchProduct()
 		//bonusCombo()
-		page_stock()
+		 page_stock()
 		
 		
 		$('#campaign_combo_id_lv').empty();
@@ -324,24 +316,24 @@ var  apipath ='http://127.0.0.1:8000/skfah/'
 		//localStorage.synced=''
 		//alert (today);
 		//alert (localStorage.synced);
-		//if (localStorage.synced=='YES'){
-//			$("#cid").val(localStorage.cid);
-//			$("#user_id").val(localStorage.user_id);
-//			$("#user_pass").val(localStorage.user_pass);
-//			//if (localStorage.user_type=='sup'){
-////			$("#chemisVDiv").hide();
-////			$("#chSaveDiv").hide();
-////			
-////			
-////			}
-////			else{
-////				$("#chemisVDiv").show();
-////				$("#chSaveDiv").show();
-////			}
-//			//alert (localStorage.synced)
-//			$.afui.loadContent("#pageHome",true,true,'right');
+		if (localStorage.synced=='YES'){
+			$("#cid").val(localStorage.cid);
+			$("#user_id").val(localStorage.user_id);
+			$("#user_pass").val(localStorage.user_pass);
+			//if (localStorage.user_type=='sup'){
+//			$("#chemisVDiv").hide();
+//			$("#chSaveDiv").hide();
 //			
-//		}
+//			
+//			}
+//			else{
+//				$("#chemisVDiv").show();
+//				$("#chSaveDiv").show();
+//			}
+			//alert (localStorage.synced)
+			$.afui.loadContent("#pageHome",true,true,'right');
+			
+		}
 		//if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
 		//if (localStorage.synced=='YES') {
 //			$.afui.loadContent("#pageHome",true,true,'right');
@@ -1633,7 +1625,6 @@ function check_user() {
 											$("#error_login").html(resultArray[1]);
 										}
 										else if (resultArray[0]=='SUCCESS'){
-													localStorage.synced='YES'
 													afterSync()
 													localStorage.synccode=resultArray[1];
 													localStorage.user_type=resultArray[2];
