@@ -4651,7 +4651,7 @@ function companyWsproduct(k){
 			var c_Qt='cQt_'+p.toString()
 			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'		
 			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productValueArray1+'</td></tr></table></li>'
+			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td>'+productValueArray1+'</td></tr></table></li>'
 			//=================Shima 17/10/20108===========								
 		}
 		localStorage.productListShow=productListShow
@@ -4673,7 +4673,7 @@ function companyWsproduct(k){
 			
 			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'	
 			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td>'+productValueArray1+'</td></tr></table></li>'
+			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td>'+productValueArray1+'</td></tr></table></li>'
 		//=================Shima 17/10/20108===========									
 		}
 		localStorage.productListShow=productListShow
