@@ -13554,7 +13554,8 @@ $.ajax(localStorage.base_url+'doctor_sync?cid='+localStorage.cid+'&rep_id='+loca
 }
 //========================================UploadImages================
 function uploadPhoto_docVisit(imageURI, imageName) {
-   // alert (localStorage.photo_submit_url)
+    alert (apipath_photo)
+	alert (imageURI);alert (imageName)
 	var options = new FileUploadOptions();
     options.fileKey="upload";
     options.fileName=imageName;
