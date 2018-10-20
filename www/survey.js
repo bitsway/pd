@@ -1808,7 +1808,7 @@ function check_user() {
 													//=================Shima end 17/10/20108===========
 													
 													//$.afui.loadContent("#pageHome",true,true,'right');
-													//homePage();
+													homePage();
 											
 													
 
@@ -11957,7 +11957,7 @@ function chemist_submit() {
 									$("#error_chemist_add_page").html(resultArray[1]);
 									$("#wait_image_chemAdd").hide();
 									$("#chSButton").show();
-									//homePage()
+									homePage()
 									location.reload();
 									$("#wait_image_chemAdd").hide();
 									$("#chSButton").show();
