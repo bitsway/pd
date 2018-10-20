@@ -559,8 +559,8 @@ function homePage() {
 					
 					
 			
-			var dr_path_value1='http://w02.yeapps.com/pd/team_report_mobile/teamShow_web1?'
-			var dr_path_value2='http://w02.yeapps.com/pd/team_report_mobile/teamShow_web2?'
+			var dr_path_value1='http://w02.yeapps.com/pd/team_report_mobile/teamShow_web_help?'
+			var dr_path_value2='http://w02.yeapps.com/pd/team_report_mobile/teamShow_web_notice?'
 			
 			
 			var dr_linkPath1="window.open('"+dr_path_value1+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"', '_system');"
