@@ -11951,10 +11951,12 @@ function chemist_submit() {
 									
 									
 									uploadPhoto_docVisit(chPhoto, imageName);
-									location.reload();
+									
 									$("#error_chemist_add_page").html(resultArray[1]);
 									$("#wait_image_chemAdd").hide();
 									$("#chSButton").show();
+									homePage()
+									location.reload();
 			
 								}else{				
 									$("#wait_image_chemAdd").hide();
