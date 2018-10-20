@@ -23,6 +23,7 @@ $.afui.useOSThemes=false;
 
 //var  apipath ='http://a007.yeapps.com/acme/medSearch/'
 var  apipath ='http://127.0.0.1:8000/skfah/'
+var  apipath_photo ='http://i001.yeapps.com/image_hub/pd_image/pd_image/'
 /******** jahangirEditedEnd16 apipath *****************/
 
 
@@ -35,8 +36,8 @@ var  apipath ='http://127.0.0.1:8000/skfah/'
 			$("#cid").val(localStorage.cid);
 			$("#user_id").val(localStorage.user_id);
 			$("#user_pass").val(localStorage.user_pass);
-
-			$.afui.loadContent("#pageHome",true,true,'right');
+			homePage();
+			//$.afui.loadContent("#pageHome",true,true,'right');
 			
 		}
 		
@@ -526,7 +527,58 @@ function homePage() {
 	var year = currentDate.getFullYear()
 	//alert (parseInt(day))
 	var today=  year + "-" + month + "-" + day
-	localStorage.today=today;						
+	localStorage.today=today;		
+			
+	
+	
+			var path_value1='http://w02.yeapps.com/pd/team_report_mobile/teamShow_web1?'
+			var path_value2='http://w02.yeapps.com/pd/team_report_mobile/teamShow_web2?'
+			var path_value3='http://w02.yeapps.com/pd/team_report_mobile/teamShow_web3?'
+			
+			var linkPath1="window.open('"+path_value1+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"', '_system');"
+			
+			var linkPath2="window.open('"+path_value2+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"', '_system');"
+			
+			var linkPath3="window.open('"+path_value3+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"', '_system');"
+			
+			//var button_combo='<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td><a href="#" onclick="'+linkPath+'">'+'<input type="submit"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     TEAM REPORT      "   /></a></td></tr></table></li>';
+			
+			
+			var button_combo_show='<table width="100%" border="0"><tr>'
+			button_combo_show=button_combo_show+'<td><div style="width:100%; " onclick="'+linkPath1+'"><img style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="SMC.png"> </div></td>'
+			button_combo_show=button_combo_show+'<td><div style="width:100%; " onclick="'+linkPath2+'"><img  style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="uni_report.png"> </div></td>'
+			button_combo_show=button_combo_show+'<td><div style="width:100%; " onclick="'+linkPath3+'"><img  style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="Arla.png"> </div></td></tr></table>'
+			
+			
+			
+			$('#button_show_div').empty();
+			$('#button_show_div').append(button_combo_show);
+					
+					
+					
+					
+					
+			
+			var dr_path_value1='http://w02.yeapps.com/pd/team_report_mobile/teamShow_web1?'
+			var dr_path_value2='http://w02.yeapps.com/pd/team_report_mobile/teamShow_web2?'
+			
+			
+			var dr_linkPath1="window.open('"+dr_path_value1+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"', '_system');"
+			
+			var dr_linkPath2="window.open('"+dr_path_value2+"cid="+localStorage.cid+"&rep_id="+localStorage.user_id+"&rep_pass="+localStorage.user_pass	+"', '_system');"
+			
+			
+			
+			var dr_button_combo_show='<table width="100%" border="0">'
+			dr_button_combo_show=dr_button_combo_show+'<tr><td width="10px"></td><td><div style="width:100%; " onclick="'+dr_linkPath1+'"><img style="padding-top:0px; padding-bottom:0px;" hight="150px" width="150px" src="help.png"> </div></td></tr>'
+			
+			dr_button_combo_show=dr_button_combo_show+'<tr><td width="10px"></td><td><div style="width:100%; " onclick="'+dr_linkPath2+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img  style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="notice.png"> </div></td></tr></table>'
+			
+			
+			
+			$('#drPage').empty();
+			$('#drPage').append(dr_button_combo_show);
+					
 	//localStorage.synced=synced
 	//if ((localStorage.synced=='YES') & (localStorage.sync_date==today)){
 	//if (localStorage.synced!='YES'){
@@ -884,28 +936,28 @@ function reload_function() {
 }
 
 
-function getLocationInfo() { //location
-	$("#lat").val(0);
-	$("#longitude").val(0);
+function getLocationInfoSubmit() { //location
+	//$("#lat").val(0);
+//	$("#longitude").val(0);
+//	
+//	
+//	$("#wait_image_visit_submit").show()
+//	$("#visit_submit").hide();
+//	$("#visit_location").hide();
 	
 	
-	$("#wait_image_visit_submit").show()
-	$("#visit_submit").hide();
-	$("#visit_location").hide();
 	
 	
-	
-	
-	$("#wait_image_visit_submit_doc").hide()
-	$("#visit_submit_doc").show();
+	//$("#wait_image_visit_submit_doc").hide()
+	//$("#visit_submit_doc").show();
 	//$("#visit_location_doc").hide();
-	$("#checkLocation_doc").html('');
+	//$("#checkLocation_doc").html('');
 	
 	
 	
-	$("#errorChkVSubmit").html('');
+	//$("#errorChkVSubmit").html('');
 	//$("#errorConfiProfileUpdate").html('');
-	$("#errorChkVSubmit_doc").html('');
+	//$("#errorChkVSubmit_doc").html('');
 	
 	var options = { enableHighAccuracy: true, timeout:15000};
 	//var options = { enableHighAccuracy: true, timeout:1000};
@@ -915,8 +967,8 @@ function getLocationInfo() { //location
 
 function onSuccess(position) {
 	
-	$("#lat").val(position.coords.latitude);
-	$("#longitude").val(position.coords.longitude);
+	//$("#lat").val(position.coords.latitude);
+	//$("#longitude").val(position.coords.longitude);
 	
 	//$("#lat_p").val(position.coords.latitude);
 	//$("#long_p").val(position.coords.longitude);
@@ -930,17 +982,17 @@ function onSuccess(position) {
 	
 	
 	
-	$("#checkLocation").html('Location Confirmed'); 
-	//$("#checkLocationProfileUpdate").html('Location Confirmed');
-		
-	
-	$("#wait_image_visit_submit").hide();
-	$("#visit_submit").show();
-	$("#visit_location").hide();
-	
-	$("#checkLocation_doc").html('Location Confirmed'); 
-
-	$("#wait_image_visit_submit_doc").hide();
+	//$("#checkLocation").html('Location Confirmed'); 
+//	//$("#checkLocationProfileUpdate").html('Location Confirmed');
+//		
+//	
+//	$("#wait_image_visit_submit").hide();
+//	$("#visit_submit").show();
+//	$("#visit_location").hide();
+//	
+//	$("#checkLocation_doc").html('Location Confirmed'); 
+//
+//	$("#wait_image_visit_submit_doc").hide();
 	//$("#visit_submit_doc").show();
 	//$("#visit_location_doc").hide();
 	localStorage.location_error=''
@@ -955,37 +1007,38 @@ function onSuccess(position) {
 function onError(error) {
 	
 	localStorage.location_error=error.code
-	
-	
-	
+	//alert (localStorage.location_error)
+	localStorage.latitude='0'
+	localStorage.longitude='0'
+	alert ("Please on your GPS")
 	//alert (localStorage.location_error)
 	
-	$("#lat").val(0);
-	$("#longitude").val(0);
-	
-	//$("#lat_p").val(0);
-	//$("#long_p").val(0);
-
-	if (localStorage.location_error==2){
-		$("#checkLocation").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
-		//$("#checkLocationProfileUpdate").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
-		$("#checkLocation_doc").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
-
-	}else{
-		$("#checkLocation").html('Location can not be found. Last Location will be submitted.');
-		//$("#checkLocationProfileUpdate").html('Location can not be found. Last Location will be submitted.');
-		$("#checkLocation_doc").html('Location can not be found. Last Location will be submitted.');
-	}
-	
-	
-	$("#wait_image_visit_submit").hide();
-	$("#visit_submit").show();
-	$("#visit_location").hide();
-	
-	
-	$("#wait_image_visit_submit_doc").hide();
-	$("#visit_submit_doc").show();
-	$("#visit_location_doc").hide();
+	//$("#lat").val(0);
+//	$("#longitude").val(0);
+//	
+//	//$("#lat_p").val(0);
+//	//$("#long_p").val(0);
+//
+//	if (localStorage.location_error==2){
+//		$("#checkLocation").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
+//		//$("#checkLocationProfileUpdate").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
+//		$("#checkLocation_doc").html('<font style="color:#F00;">Please activate <font style="font-weight:bold">location </font> and <font style="font-weight:bold"> data </font></font>');
+//
+//	}else{
+//		$("#checkLocation").html('Location can not be found. Last Location will be submitted.');
+//		//$("#checkLocationProfileUpdate").html('Location can not be found. Last Location will be submitted.');
+//		$("#checkLocation_doc").html('Location can not be found. Last Location will be submitted.');
+//	}
+//	
+//	
+//	$("#wait_image_visit_submit").hide();
+//	$("#visit_submit").show();
+//	$("#visit_location").hide();
+//	
+//	
+//	$("#wait_image_visit_submit_doc").hide();
+//	$("#visit_submit_doc").show();
+//	$("#visit_location_doc").hide();
 }
 
 
@@ -1012,8 +1065,8 @@ function getLocationInfo_ready() { //location
 // onSuccess Geolocationshom
 
 function onSuccess_ready(position) {
-	$("#lat").val(position.coords.latitude);
-	$("#longitude").val(position.coords.longitude);
+	//$("#lat").val(position.coords.latitude);
+	//$("#longitude").val(position.coords.longitude);
 	
 	//$("#lat_p").val(position.coords.latitude);
 	//$("#long_p").val(position.coords.longitude);
@@ -1024,22 +1077,22 @@ function onSuccess_ready(position) {
 	
 	
 	
-	$("#errorChkVSubmit").html('');
-	//$("#errorConfiProfileUpdate").html('');
-	$("#errorChkVSubmit_doc").html('');
-	
-	
-	$("#checkLocation").html('Location Confirmed'); 
-	//$("#checkLocationProfileUpdate").html('Location Confirmed');
-		
-	
-	$("#wait_image_visit_submit").hide();
-	$("#visit_submit").show();
-	$("#visit_location").hide();
-	
-	$("#checkLocation_doc").html('Location Confirmed'); 
+	//$("#errorChkVSubmit").html('');
+//	//$("#errorConfiProfileUpdate").html('');
+//	$("#errorChkVSubmit_doc").html('');
+//	
+//	
+//	$("#checkLocation").html('Location Confirmed'); 
+//	//$("#checkLocationProfileUpdate").html('Location Confirmed');
+//		
+//	
+//	$("#wait_image_visit_submit").hide();
+//	$("#visit_submit").show();
+//	$("#visit_location").hide();
+//	
+//	$("#checkLocation_doc").html('Location Confirmed'); 
 
-	$("#wait_image_visit_submit_doc").hide();
+	//$("#wait_image_visit_submit_doc").hide();
 	//$("#visit_submit_doc").show();
 	//$("#visit_location_doc").hide();
 	//alert (position.coords.longitude)
@@ -1052,8 +1105,8 @@ function onError_ready(error) {
 	
 	//alert (error);
 	
-	$("#lat").val(0);
-	$("#longitude").val(0);
+	//$("#lat").val(0);
+//	$("#longitude").val(0);
 	
 	//$("#lat_p").val(0);
 	//$("#long_p").val(0);
@@ -1062,15 +1115,16 @@ function onError_ready(error) {
 	//$("#checkLocation").html('Location not found. Last Location will submit.');
 	//$("#checkLocationProfileUpdate").html('Location not found. Last Location will submit.');
 	
-	
-	$("#checkLocation").html(''); 
-	$("#wait_image_visit_submit").hide();
-	$("#visit_submit").show();
-	$("#visit_location").hide();
-	
-    $("#checkLocation_doc").html('');
-	$("#wait_image_visit_submit_doc").hide();
-	alert ("Please on your GPS")
+	localStorage.latitude='0'
+	localStorage.longitude='0'
+	//$("#checkLocation").html(''); 
+//	$("#wait_image_visit_submit").hide();
+//	$("#visit_submit").show();
+//	$("#visit_location").hide();
+//	
+//    $("#checkLocation_doc").html('');
+//	$("#wait_image_visit_submit_doc").hide();
+	//alert ("Please on your GPS")
 	//$("#visit_submit_doc").show();
 	//$("#visit_location_doc").hide();
 }
@@ -3355,19 +3409,19 @@ function marketNextLV(lvalue) {
 	//getLocationInfo();
 	getLocationInfo_ready()
 	//alert (localStorage.doctor_flag)
-	if (localStorage.doctor_flag==1){
-		
-		marketNext_doc();
-	}
-	else{
-		if (localStorage.user_type=='rep'){
+	//if (localStorage.doctor_flag==1){
+//		
+//		marketNext_doc();
+//	}
+//	else{
+//		if (localStorage.user_type=='rep'){
 			marketNext();	
-		}
-		else{
-			
-			marketNext_sup();	
-		}
-	}	
+		//}
+//		else{
+//			
+//			marketNext_sup();	
+//		}
+//	}	
 }
 
 function marketNext() {
@@ -3387,12 +3441,13 @@ function marketNext() {
 			localStorage.visit_market_show=market_name
 			var market_Id=market_name.split('|')[1];
 			
-			
+			//alert (market_Id)
 			//var catType=$("#catCombo").val();
 			
 			//===========================Get market client list Start============================
 			market_list=localStorage.market_client;
-			
+			//alert (market_list)
+			//alert (market_list.indexOf(market_Id))
 			if (market_list.indexOf(market_Id)==-1){
 					$("#err_market_next").text("Sorry Network not available");	
 					$("#wait_image_unschedule_market").hide();		
@@ -3432,7 +3487,7 @@ function marketNext() {
 							var mClientCat=mClientValueArray[2];
 							//alert (catType);
 							
-							
+							//alert (mClientID)
 							if(mClientID!=''){
 
 									<!--unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a  onClick="marketRetailerNextLV(\''+mClientName+'|'+mClientID+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></table></li>';-->
@@ -3448,7 +3503,7 @@ function marketNext() {
 					var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id_lv');
 					
 					
-					
+					//alert (unscheduled_m_client_list)
 					unscheduled_m_client_combo_ob.empty()
 					unscheduled_m_client_combo_ob.append(unscheduled_m_client_list);
 													
@@ -3472,14 +3527,15 @@ function marketNext() {
 					//var url = "#page_market_ret";	
 					//$.mobile.navigate(url);
 					
-					$.afui.loadContent("#page_market_ret",true,true,'right');
+					//$.afui.loadContent("#page_market_ret",true,true,'right');
 					
 					
 				}
 			}//end else
-
+		$.afui.loadContent("#page_market_ret",true,true,'right');
 			//============================Get market client list end===============================
-		}			
+		}		
+			
 }
 function marketNext_sup() {
 	$("#unscheduled_m_client_combo_id").val('');
@@ -4593,6 +4649,16 @@ function companyWsproduct(k){
 
 	if(input_id=='0'){
 		var proList=localStorage.pr_A.split('<rd>');
+	}
+	else if(input_id=='1') {
+		var proList=localStorage.pr_B.split('<rd>');
+	}
+	else if(input_id=='2') {
+		var proList=localStorage.pr_C.split('<rd>');
+	}
+	else if(input_id=='3') {
+		var proList=localStorage.pr_D.split('<rd>');
+	}
 		var productLength=proList.length;
 		var productListShow=''
 		var product_p_Show=''
@@ -4602,84 +4668,25 @@ function companyWsproduct(k){
 			var product_p='prId_'+p.toString()
 			var p_Qt='pQt_'+p.toString()
 			var c_Qt='cQt_'+p.toString()
+			var product_info='product_info'+p.toString()
 			
 			var productValueArray1 = proList[p];
+			var pShow=productValueArray1.split('<fd>')[1]+'|'+productValueArray1.split('<fd>')[0]
+			
+			
 			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td>'+productName+'</td></tr></table></li>'
+			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font></td></tr></table></li>'
 			//=================Shima 17/10/20108===========
-			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'	
-			product_name=product_name+'<input  name="'+productName+'" id="'+productName+'" type="hidden">'	
+			productListShow=productListShow+'<input  name="'+product_info+'" id="'+product_info+'" value="'+productValueArray1+'" type="text">'	
+			//product_name=product_name+'<input  name="'+productName+'" id="'+productName+'" type="text">'	
 							
 		}
 		localStorage.productListShow=productListShow
 		$('#product_ul_list').empty()
 		$('#product_ul_list').append(localStorage.productListShow);
-	}
 	
-	else if(input_id=='1') {
-		var proList=localStorage.pr_B.split('<rd>');
-		var productLength=proList.length;
-		var product_p_Show=''
-		var productListShow=''
-		for (var p=0; p < productLength; p++){
-			var productValueArray1 = proList[p];
-			var product_p='prId_'+p.toString()
-			var p_Qt='pQt_'+p.toString()
-			var c_Qt='cQt_'+p.toString()
-			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'
-			//=================Shima 17/10/20108===========	
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td>'+productValueArray1+'</td></tr></table></li>'
-			//=================Shima 17/10/20108===========
-			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'									
-		}
-		
-		localStorage.productListShow=productListShow
-		$('#product_ul_list').empty()
-		$('#product_ul_list').append(localStorage.productListShow);
-	}
 	
-	else if(input_id=='2') {
-		var proList=localStorage.pr_C.split('<rd>');
-		var productLength=proList.length;
-		var product_p_Show=''
-		var productListShow=''
-		
-		for (var p=0; p < productLength; p++){
-			var productValueArray1 = proList[p];
-			var product_p='prId_'+p.toString()
-			var p_Qt='pQt_'+p.toString()
-			var c_Qt='cQt_'+p.toString()
-			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'		
-			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td>'+productValueArray1+'</td></tr></table></li>'
-			//=================Shima 17/10/20108===========								
-		}
-		localStorage.productListShow=productListShow
-		$('#product_ul_list').empty()
-		$('#product_ul_list').append(localStorage.productListShow);
-	}
 	
-	else if(input_id=='3') {
-		var proList=localStorage.pr_D.split('<rd>');
-		var productLength=proList.length;
-		var product_p_Show=''
-		var productListShow=''
-		
-		for (var p=0; p < productLength; p++){
-			var productValueArray1 = proList[p];
-			var product_p='prId_'+p.toString()
-			var p_Qt='pQt_'+p.toString()
-			var c_Qt='cQt_'+p.toString()
-			
-			product_p_Show=product_p_Show+'<input  name="'+product_p+'" id="'+product_p+'" type="hidden">'	
-			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td>'+productValueArray1+'</td></tr></table></li>'
-		//=================Shima 17/10/20108===========									
-		}
-		localStorage.productListShow=productListShow
-		$('#product_ul_list').empty()
-		$('#product_ul_list').append(localStorage.productListShow);
-	}
 									
 	product_list()	
 }
@@ -4710,32 +4717,60 @@ function getCart(){
 	var show_dataGet=''
 	var show_data='' 
 	var prouct_stringSubmit=''
+	var totalTotalPrice=0
+	var totalTotalDistPrice=0
 	
+	//show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%">Cartoon</td><td style="width:15%;">Pcs&nbsp;&nbsp;</td><td>Item</td><td align="right">Price</td><td align="center">Comision</td><td ></td></tr></table></li>'
 	for (i=0; i<proList.length; i++){
 		proName=proList[i]
 		pr_id=proName.split('<fd>')[0]
 		pr_name=proName.split('<fd>')[1]
 		var p_Qt='pQt_'+i.toString()
 		var c_Qt='cQt_'+i.toString()
+		var product_info='product_info'+i.toString()
 			
 		var get_pcs_val=$("#"+p_Qt).val();
 		var get_crtn_val=$("#"+c_Qt).val();
+		
+		var product_info_val=$("#"+product_info).val();
+		var item_carton=product_info_val.split('<fd>')[2]
+		var price=product_info_val.split('<fd>')[3]
+		var dist_price=product_info_val.split('<fd>')[4]
+		
+		
+		
+		
 		var showData_id=''+i.toString()
 		if(parseInt(get_pcs_val) > 0 || parseInt(get_crtn_val) > 0 ){
-			prouct_stringSubmit=prouct_stringSubmit+pr_id+'<fd>'+pr_name+'<fd>'+get_pcs_val+'<fd>'+get_crtn_val+'<rd>'
+			
+			var TotalPcs=(get_crtn_val*parseInt(item_carton))+parseInt(get_pcs_val)
+			//alert (TotalPcs)
+		
+			var TotalPrice=TotalPcs*price
+			
+			var TotalDistPrice=TotalPcs*dist_price
+			var Comision=TotalPrice-TotalDistPrice
+			totalTotalPrice=totalTotalPrice+TotalPrice
+			totalTotalDistPrice=totalTotalDistPrice+TotalDistPrice
+		
+		
+			prouct_stringSubmit=prouct_stringSubmit+pr_id+'<fd>'+pr_name+'<fd>'+get_pcs_val+'<fd>'+get_crtn_val+'<fd>'+item_carton+'<fd>'+price+'<fd>'+dist_price+'<rd>'
 			
 			show_data=show_data+'<input  name="'+showData_id+'" id="'+showData_id+'" type="hidden" value="'+pr_name+'">'
 			//=================Shima 17/10/20108===========
-			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%">'+get_crtn_val+'</td><td style="width:15%;">'+get_pcs_val+'&nbsp;&nbsp;</td><td>'+pr_name+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
+			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%">'+get_crtn_val+'</td><td style="width:15%;">'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:25%;">'+pr_name+'</td><td style="width:15%;">'+TotalPrice.toFixed(2)+'</td><td style="width:15%;">'+Comision.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
 			/*show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" readonly style="background-color:#CCC;color:#fff;" value="'+get_pcs_val+'"/></td><td style="width:15%"><input type="number" name="'+cQty+'" id="'+cQty+'" readonly style="background-color:#CCC;color:#fff;" value="'+get_crtn_val+'"/></td><td>'+pr_name+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'*/
 		//=================Shima 17/10/20108===========
 		}
 	}
 	
+	
+	show_data=show_data+'<table style="width:100%; background-color:#F0D2D6 "><tr><td style="width:15%">Tota Amount</td><td style="width:15%;">'+totalTotalPrice.toFixed(2)+'&nbsp;&nbsp;</td><td>Comision:</td><td>'+Comision.toFixed(2)+'&nbsp;&nbsp;</td><td>Total: '+totalTotalDistPrice.toFixed(2)+'&nbsp;&nbsp;</td></tr></table>'
 	localStorage.prouct_stringSubmit=prouct_stringSubmit
 	localStorage.show_data=show_data
   	$("#show_data").html('');
 	$('#show_data').html(localStorage.show_data);
+	getLocationInfoSubmit()
 }
 function cartPage(){
 	var prouct_stringSubmit=localStorage.prouct_stringSubmit
@@ -4769,10 +4804,11 @@ function submit_page(){
 }
 
 function submit_data(){
+	//alert (localStorage.latitude)
+	//alert (localStorage.longitude)
+	//alert(localStorage.base_url+'dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&password='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude)
 	
-	//alert(localStorage.base_url+'dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit)
-	
-	$.ajax(localStorage.base_url+'dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit,{
+	$.ajax(localStorage.base_url+'dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&password='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,{
 			type:'POST',
 			timeout: 30000,
 			success: function(result){	
@@ -11892,13 +11928,12 @@ function chemist_submit() {
 	
 		$("#wait_image_chemAdd").show();
 		$("#chSButton").hide();
-		//alert ( localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&ChemistName='+encodeURI(ChemistName)+'&Address_Line_1='+encodeURI(Address_Line_1)+'&RegistrationNo='+encodeURI(RegistrationNo)+'&nid='+encodeURI(nid)+'&Contact_Name='+Contact_Name+'&Contact_phone='+encodeURI(Contact_phone)+'&Category='+encodeURI(Category)+'&subCategory='+encodeURI(subCategory)+'&dob='+encodeURI(dob)+'&Cash_Credit='+encodeURI(Cash_Credit)+'&Credit_Limit='+encodeURI(Credit_Limit)+'&Status='+encodeURI(Status));
+		//alert ( localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&ChemistName='+encodeURI(ChemistName)+'&Address_Line_1='+encodeURI(Address_Line_1)+'&RegistrationNo='+encodeURI(RegistrationNo)+'&nid='+encodeURI(nid)+'&Contact_Name='+Contact_Name+'&Contact_phone='+encodeURI(Contact_phone)+'&Category='+encodeURI(Category)+'&subCategory='+encodeURI(subCategory)+'&dob='+encodeURI(dob)+'&Cash_Credit='+encodeURI(Cash_Credit)+'&Credit_Limit='+encodeURI(Credit_Limit)+'&Status='+encodeURI(Status)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude);
 		
 				$.ajax({
 					 type: 'POST',
-					 url: localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&ChemistName='+encodeURI(ChemistName)+'&Address_Line_1='+encodeURI(Address_Line_1)+'&RegistrationNo='+encodeURI(RegistrationNo)+'&nid='+encodeURI(nid)+'&Contact_Name='+Contact_Name+'&Contact_phone='+encodeURI(Contact_phone)+'&Category='+encodeURI(Category)+'&subCategory='+encodeURI(subCategory)+'&dob='+encodeURI(dob)+'&Cash_Credit='+encodeURI(Cash_Credit)+'&Credit_Limit='+encodeURI(Credit_Limit)+'&Status='+encodeURI(Status)+'&imageName='+encodeURI(imageName)
-
-,
+					 url: localStorage.base_url+'chemist_submit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_id='+market_Id+'&ChemistName='+encodeURI(ChemistName)+'&Address_Line_1='+encodeURI(Address_Line_1)+'&RegistrationNo='+encodeURI(RegistrationNo)+'&nid='+encodeURI(nid)+'&Contact_Name='+Contact_Name+'&Contact_phone='+encodeURI(Contact_phone)+'&Category='+encodeURI(Category)+'&subCategory='+encodeURI(subCategory)+'&dob='+encodeURI(dob)+'&Cash_Credit='+encodeURI(Cash_Credit)+'&Credit_Limit='+encodeURI(Credit_Limit)+'&Status='+encodeURI(Status)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
+					 
 					 success: function(result) {
 						 	$("#wait_image_chemAdd").hide();
 					 	 $("#chSButton").show();
@@ -13533,7 +13568,8 @@ function uploadPhoto_docVisit(imageURI, imageName) {
 	options.chunkedMode = false;
 	
     var ft = new FileTransfer();
-     ft.upload(imageURI, encodeURI(localStorage.photo_submit_url+"fileUploader_docVisit/"),winProfile,failProfile,options);
+	ft.upload(imageURI, encodeURI(apipath_photo),winProfile,failProfile,options);
+    //ft.upload(imageURI, encodeURI(localStorage.photo_submit_url+"fileUploader_docVisit/"),winProfile,failProfile,options);
 	 
 }
 

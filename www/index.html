@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>M-Reporting</title>
+    <title>PD 2.0</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, minimal-ui"> 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -76,7 +76,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 <body  >
     <div id="splashscreen" class='ui-loader heavy'>
-                M-Reporting
+                PD 2.0
                 <br>
                 <br>
                 <span ><img style="" width="50px;" src="loading.gif" alt=""></span>
@@ -107,7 +107,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <input name="error_logintext" id="error_logintext"  type="hidden" placeholder="CID" value="">	
                     <div class="input-group" >
                     	<form style="background-color:#EDFEED">		
-						<input name="cid" id="cid"  type="text" placeholder="CID" value="">			
+						<input name="cid" id="cid"  type="hidden" placeholder="PD" value="PD">			
                         <input name="user_id" id="user_id"   type="text" placeholder="User ID" value="">
                         <input type="number" name="user_pass" id="user_pass"  placeholder="Password" value="">
                     </form>						
@@ -134,7 +134,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
       
        <div class="view" id="pageHomeView">
         <div class="pages">
-         <header align="center"><h1 style="font-size:16px; font-weight:normal; color:#F8F8F8"><font style="font-size:12px">m</font>R<font style="font-size:14px">eporting</font></header> 
+         <header align="center"><h1 style="font-size:16px; font-weight:normal; color:#F8F8F8"><font style="font-size:14px">PD 2.0</font></header> 
          
             <div class="panel" id="pageHome" style="background-color:#EDFEED">
             
@@ -149,7 +149,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                          <!-- =================Shima Start===========-->
                         <tr>
                             <td align="center">
-                            	<div id="reqDiv" align="center"  style="width:100%; background-color:#09C; ">
+                            	<div id="reqDiv" align="center"  style="width:100%; background-color:#09C;  ">
                             		<img onClick="req_page();" style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="chemist_visit.png"> 
                             	</div>
                             </td>
@@ -173,13 +173,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     
                     
                     </br></br></br></br>
-                    <table width="100%" border="0">
+                    
+                    <div id="button_show_div"></div>
+                    
+                    <!--<table width="100%" border="0">
                       <tr>
                         <td><div style="width:100%; "><img style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="SMC.png"> </div></td>
                         <td><div style="width:100%; "><img  style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="uni_report.png"> </div></td>
                         <td><div style="width:100%; "><img  style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="Arla.png"> </div></td>
                       </tr>
-                    </table>
+                    </table>-->
                <!-- </div>-->
             </div>
         </div>
@@ -225,19 +228,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <h1></h1>
                 </header>
                 <br>
-                 <!--<div onClick="page_inbox()" align="center"> <img style="height:70px; width:70px" src="inbox.png"></div>
-                <div style="background:#008A8A; height:1px"></div>-->
-               <div onClick="page_promo_main()" align="center"> <img style="height:70px; width:70px" src="promo.png"></div>
+                 
                </br></br>
-              <!-- <div style="background:#008A8A; height:1px"></div>
-                <div onClick="page_kpi()" align="center"> <img style="height:70px; width:70px" src="kpi.png"></div>
-               <div style="background:#008A8A; height:1px"></div>
-                <div onClick="page_help()" align="center"> <img style="height:70px; width:70px" src="help.png"></div>
-                <div style="background:#008A8A; height:center"></div>-->
-                <div onClick="page_stock_main()" align="center"> <img style="height:70px; width:70px" src="stock.png"></div>
-                </br></br>
+             
+                <div id="drPage" align="center"> </div>
+                <!--</br></br>
                  <div onClick="page_notice()" align="center"> <img style="height:70px; width:70px" src="notice.png"></div>
-            </div>
+            </div>-->
         </nav>
         
         
@@ -250,7 +247,9 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"><input type="text" id="unschedule_market_combo_id" style="width:100%; color:#000" placeholder="Market Search" onKeyUp="searchMarket()"  /></div></font></td>
+            <td align="center">
+            
+            <font style="font-size:14px">PD 2.0</font></td>
             <td width="10%" >&nbsp;</td> 
           </tr>
         </table>
@@ -261,7 +260,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             </br></br></br>
                 <!--<div class="card">-->
                     <!--<h1>Sync</h1>-->
-                   
+                   <input type="hidden" id="unschedule_market_combo_id" style="width:100%; color:#000" placeholder="Market Search" onKeyUp="searchMarket()"  />
                      <div id="error_login" style="color:#C00"></div> 
                     
                  <!--<div class="input-group"> -->
@@ -279,8 +278,8 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
         <footer>
 		<a onClick="homePage()" class="icon home" ></a>
        
-        <a id="dPending" name="dPending" onClick="page_dList()" style="font-size:18px;"   > Pending </a>
-        <a id="dBlank" name="dBlank" onClick="homePage()"></a>
+        <!--<a id="dPending" name="dPending" onClick="page_dList()" style="font-size:18px;"   > Pending </a>
+        <a id="dBlank" name="dBlank" onClick="homePage()"></a>-->
          </footer>
 
     </div>               
@@ -289,13 +288,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
   
            
 <!-- =================Shima Start===========-->
-     <div class="view" id="page_market_retView">
+     <div class="view" id="requisition_pageView">
         <div class="pages">
          <header align="center">
          <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="homePage()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center"><font style="font-size:18px; font-weight:bold"><div><input type="text" id="unschedule_market_combo_id" style="width:100%; color:#000" placeholder="Search" onKeyUp="searchCompany()"  /></div></font></td>
+            <td align="center"><font style="font-size:14px">PD 2.0</font></td>
             <td width="10%" >&nbsp;</td> 
           </tr>
         </table>
@@ -318,13 +317,13 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          
          
    </div>         
-     <div class="view" id="page_market_retView">
+     <div class="view" id="product_pageView">
         <div class="pages">
          <header align="center">
          <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="reqList()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"><input type="text" id="unschedule_market_combo_id" style="width:100%; color:#000" placeholder="Search" onKeyUp="searchMarket()"  /></div></font></td>
+            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"><input type="text" id="item_combo_id" style="width:100%; color:#000" placeholder="Search" onKeyUp="searchProduct()"  /></div></font></td>
             <td width="10%" align="left" onClick="cartPage()"><img src="order.png" width="30" height="30" alt="Cart" >	</td>
           </tr>
         </table>
@@ -347,7 +346,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
    </div>  
    
           
-     <div class="view" id="page_market_retView">
+     <div class="view" id="cart_pageView">
         <div class="pages">
          <header align="center">
          <table width="100%" border="0">
@@ -379,7 +378,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
    </div>   
   
    </div>         
-     <div class="view" id="page_market_retView">
+     <!--<div class="view" id="page_market_retView">
         <div class="pages">
          <header align="center">
          <h2 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting</h2>
@@ -397,10 +396,10 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 		<a onClick="homePage()" class="icon home" ></a>
        
          </footer>
-   </div>   
+   </div>   -->
   
        
-<div class="view" id="page_market_retView">
+<div class="view" id="msg_pageView">
     <div class="pages">
     	<header align="center">
         	<h2 style="text-align:center;width: 100%;height: auto;color: #fff;padding: 10px; margin: 0px;">M-Reporting</h2>
@@ -409,7 +408,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
            <table width="100%" border="0">
            		<tr>
                 	<td align="center">
-                		<div id="visit_success" style="background-image:url(result_back.png); background-repeat:no-repeat; width:300px; height:200px; color:#FFF; font-size:20px;"  align="center"></br>
+                		<div id="visit_success" style="background-image:url(result_back.png); background-repeat:no-repeat; width:300px; height:200px; color:#FFF; font-size:20px;"  align="center"></br></br></br>
                 			Submitted Successfully.<br><br><br>
                 		</div>
                 	</td>
@@ -449,7 +448,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 				
 			
 				<div id="err_m_retailer_next" style="color:#C00"></div>
-                <div><span class="market" style="font-size:12px;color:#FFF" ></span></div>   
+                <div><span class="market" style="font-size:12px;color:#009191" ></span></div>   
 
 				<br/> 
                       
@@ -4144,7 +4143,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 <div class="view" id="page_chemist_addView">
 <div class="pages">
 
-<header><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Customer Add</h1></header> 
+<header><h1 style="font-size:18px; font-weight:normal; color:#F8F8F8">Outlet Add</h1></header> 
 
 
     <div class="panel" id="page_chemist_add" style="background-color:#EDFEED">
@@ -4166,27 +4165,27 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     </br>
                 <table width="100%" border="0">
                   <tr>
-                    <td>CustomerName <span style="color:#F00">*</span></td>
+                    <td>OutletName <span style="color:#F00">*</span></td>
                     <td>:</td>
                     <td>
                     <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
                   </tr>
                   <tr>
-                    <td>Address Line 1 <span style="color:#F00">*</span></td>
+                    <td>Address <span style="color:#F00">*</span></td>
                     <td>:</td>
                     <td><textarea name="addClAddress" id="addClAddress"  rows="3" placeholder="Address"></textarea>
                     </td>
                   </tr>
-                  <tr>
+                  <!--<tr>
                     <td>RegistrationNo </td>
                     <td>:</td>
-                    <td><input type="text" name="addCRegNo"   id="addCRegNo" placeholder="RegistrationNo"  ></td>
+                    <td>--><input type="hidden" name="addCRegNo"   id="addCRegNo" placeholder="RegistrationNo"  ><!--</td>
                   </tr>
                   <tr>
                     <td>NID </td>
                      <td>:</td>
-                    <td><input type="text" name="addCNid"   id="addCNid" placeholder="NID"  ></td>
-                  </tr>
+                    <td>--><input type="hidden" name="addCNid"   id="addCNid" placeholder="NID"  ><!--</td>
+                  </tr>-->
                   <tr>
                     <td> Contact Name <span style="color:#F00">*</span> </td>
                      <td>:</td>
@@ -4220,28 +4219,30 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <td><input type="date" name="addCDOB"  maxlength="50"  id="addCDOB" placeholder="DOB"  ></td>
                   </tr>
                   <tr>
-                  <tr>
+                  <!--<tr>
                     <td>Credit Limit <span style="color:#F00">*</span></td>
                      <td>:</td>
-                    <td>
-                    	<input type="number" name="addCCreditLimit"  maxlength="50"  id="addCCreditLimit" placeholder="Credit Limit"  >
+                    <td>-->
+                    	<input type="hidden" name="addCCreditLimit"  maxlength="50"  id="addCCreditLimit" placeholder="Credit Limit" value="0"  >
                      
                  
-                   </td>
+                   <!--</td>
                   </tr>
                <tr>
                     <td>Cash/Credit <span style="color:#F00">*</span> </td>
                      <td>:</td>
-                    <td>
+                    <td>-->
+                    <input type="hidden" name="addCCash_Credit"  maxlength="50"  id="addCCash_Credit" placeholder="Credit Limit" value="Cash"  >
                     
-                    <select name="addCCash_Credit" id="addCCash_Credit">
+                    
+                 <!--   <select name="addCCash_Credit" id="addCCash_Credit">
                     <option value="Cash">Cash</option>
                     <option value="Credit">Credit</option
                     ></select>
                                               
                         
                    </td>
-                  </tr>
+                  </tr>-->
                    
 				<!--<tr>
                     <td>NumberofDoc</td>
@@ -5868,4 +5869,4 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
 </body>
 
-</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
