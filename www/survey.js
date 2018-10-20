@@ -593,6 +593,7 @@ function homePage() {
 //		}
 		
 		$.afui.loadContent("#pageHome",true,true,'right');
+		
 	//}
 }
 
@@ -1806,7 +1807,8 @@ function check_user() {
 													
 													//=================Shima end 17/10/20108===========
 													
-													$.afui.loadContent("#pageHome",true,true,'right');
+													//$.afui.loadContent("#pageHome",true,true,'right');
+													homePage();
 											
 													
 
@@ -11956,7 +11958,7 @@ function chemist_submit() {
 									$("#wait_image_chemAdd").hide();
 									$("#chSButton").show();
 									homePage()
-									location.reload();
+									//location.reload();
 			
 								}else{				
 									$("#wait_image_chemAdd").hide();
