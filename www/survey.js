@@ -11947,19 +11947,25 @@ function chemist_submit() {
 									$("#error_chemist_add_page").html(resultArray[1]);								
 								
 								}else if (resultArray[0]=='SUCCESS'){																								
-									$("#error_chemist_add_page").html(resultArray[1]);
-									$("#chSButton").show();
+									
+									
 									
 									uploadPhoto_docVisit(chPhoto, imageName);
 									location.reload();
+									$("#error_chemist_add_page").html(resultArray[1]);
+									$("#wait_image_chemAdd").hide();
+									$("#chSButton").show();
+			
 								}else{				
-									$("#chSButton").show();		
+									$("#wait_image_chemAdd").hide();
+									$("#chSButton").show();	
 									$("#error_chemist_add_page").html('Network Timeout. Please try again.');
 									}
 							}
 						  },
 					  error: function(result) {		
-					  	  $("#chSButton").show();		  
+					  	  $("#wait_image_chemAdd").hide();
+									$("#chSButton").show();	  
 						  $("#error_chemist_add_page").html('Network Timeout. Please try again.');		
 					  }
 				 });//end ajax
