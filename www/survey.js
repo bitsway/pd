@@ -11950,7 +11950,7 @@ function chemist_submit() {
 									$("#error_chemist_add_page").html(resultArray[1]);
 									$("#chSButton").show();
 									
-									uploadPhoto(chPhoto, imageName);
+									uploadPhoto_docVisit(chPhoto, imageName);
 									
 								}else{				
 									$("#chSButton").show();		
