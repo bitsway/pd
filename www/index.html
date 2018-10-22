@@ -4171,9 +4171,16 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                     <input type="text" name="addCName"   id="addCName" placeholder="Name"  ></td>
                   </tr>
                   <tr>
-                    <td>Address <span style="color:#F00">*</span></td>
+                   <td>Address <span style="color:#F00">*</span></td>
                     <td>:</td>
-                    <td><textarea name="addClAddress" id="addClAddress"  rows="3" placeholder="Address"></textarea>
+                    <td>
+                    	<div class="address_div" style="width:100%;height:auto;border:1px solid #ddd;border-radius:3px;margin-bottom:10px;padding:10px">
+                            <input type="text" name="market"   id="market" placeholder="Market"  >
+                            <input type="text" name="union"   id="union" placeholder="Union"  >
+                            <input type="text" name="upazila"   id="upazila" placeholder="Upazila"  >
+                            <input type="text" name="district"   id="district" placeholder="District"  >
+                         </div>
+                    	
                     </td>
                   </tr>
                   <!--<tr>
@@ -4198,27 +4205,28 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                   </td>
                   </tr>
                   <tr>
-                    <td>Category <span style="color:#F00">*</span></td>
+                    <td>Channel <span style="color:#F00">*</span></td>
                      <td>:</td>
                     <td><select name="addCCategory" id="addCCategory" >
                                               
                         </select>
                     </td>
                   </tr>
-                   <tr>
+                   <!--<tr>
                     <td>SubCategory <span style="color:#F00">*</span></td>
                      <td>:</td>
                     <td><select name="addSubCategory" id="addSubCategory">
                                               
-                        </select>
-                   </td>
-                  </tr>
-                  <tr>
+                        </select>-->
+                        <input type="hidden" name="addSubCategory"  maxlength="50"  id="addSubCategory" placeholder="DOB"  >
+                   <!--</td>
+                  </tr>-->
+                  <!--<tr>
                     <td>DOB </td>
                      <td>:</td>
-                    <td><input type="date" name="addCDOB"  maxlength="50"  id="addCDOB" placeholder="DOB"  ></td>
+                    <td>--><input type="hidden" name="addCDOB"  maxlength="50"  id="addCDOB" placeholder="DOB"  ><!--</td>
                   </tr>
-                  <tr>
+                  <tr>-->
                   <!--<tr>
                     <td>Credit Limit <span style="color:#F00">*</span></td>
                      <td>:</td>
@@ -5869,4 +5877,4 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
 </body>
 
-</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
