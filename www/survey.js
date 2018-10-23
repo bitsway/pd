@@ -4650,7 +4650,8 @@ function companyWsproduct(k){
 	
 	localStorage.company_name=company_name
 	localStorage.company_id=company_id
-	
+	//alert (localStorage.company_name)
+	$("#cNamePr").html(localStorage.company_name);
 	//alert (localStorage.company_name)
 
 
@@ -4676,16 +4677,19 @@ function companyWsproduct(k){
 			var p_Qt='pQt_'+p.toString()
 			var c_Qt='cQt_'+p.toString()
 			var product_info='product_info'+p.toString()
-			
+			//var price=productValueArray1.split('<fd>')[3]
+			//var dPrice=productValueArray1.split('<fd>')[4]
+			//var comn=parseFloat(price)-parseFloat(dPrice)
 			var productValueArray1 = proList[p];
-			var pShow=productValueArray1.split('<fd>')[1]+'|'+productValueArray1.split('<fd>')[0]
+			var pShow=productValueArray1.split('<fd>')[1]+'|'+productValueArray1.split('<fd>')[0]+'<br><font style="color:#C30; font-size:9px">ctn:'+productValueArray1.split('<fd>')[2]+'Pcs Price:'+productValueArray1.split('<fd>')[3]+'</font>'//+' Comn:'+productValueArray1.split('<fd>')[4]
+			
 			
 			if (localStorage.company_name=='UNILEVER'){
 			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:15%;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font></td></tr></table></li>'
+			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:80px"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:80px;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font></td></tr></table></li>'
 			//=================Shima 17/10/20108===========
 			}else{
-				productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:15%"><input type="hidden" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font></td></tr></table></li>'
+				productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:80px"><input type="hidden" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font></td></tr></table></li>'
 			}
 			productListShow=productListShow+'<input  name="'+product_info+'" id="'+product_info+'" value="'+productValueArray1+'" type="hidden">'	
 			
@@ -4709,6 +4713,7 @@ function product_list(){
 
 
 function getCart(){
+	$("#cNameCart").html(localStorage.company_name);
 	
 	var comp_index=localStorage.comp_index
 	if (comp_index==0){proListStr=localStorage.pr_A}
@@ -4732,10 +4737,11 @@ function getCart(){
 	var totalTotalDistPrice=0
 	
 	//show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%">Cartoon</td><td style="width:15%;">Pcs&nbsp;&nbsp;</td><td>Item</td><td align="right">Price</td><td align="center">Comision</td><td ></td></tr></table></li>'
+	//show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:80px">Crtn</td><td style="width:80px;">Pcs&nbsp;&nbsp;</td><td >ProductName</td><td style="width:80px;">TotalPrice</td><td style="width:80px;">&nbsp;&nbsp;Comision</td><td></td></tr></table></li>'
 	for (i=0; i<proList.length; i++){
 		proName=proList[i]
 		pr_id=proName.split('<fd>')[0]
-		pr_name=proName.split('<fd>')[1]
+		pr_name=proName.split('<fd>')[1]+' | '+pr_id
 		var p_Qt='pQt_'+i.toString()
 		var c_Qt='cQt_'+i.toString()
 		var product_info='product_info'+i.toString()
@@ -4747,6 +4753,8 @@ function getCart(){
 		var item_carton=product_info_val.split('<fd>')[2]
 		var price=product_info_val.split('<fd>')[3]
 		var dist_price=product_info_val.split('<fd>')[4]
+		
+		
 		
 		
 		
@@ -4763,24 +4771,25 @@ function getCart(){
 			var Comision=TotalPrice-TotalDistPrice
 			totalTotalPrice=totalTotalPrice+TotalPrice
 			totalTotalDistPrice=totalTotalDistPrice+TotalDistPrice
-		
+			var TotalShow=parseFloat(TotalPrice)-parseFloat(Comision)
 		
 			prouct_stringSubmit=prouct_stringSubmit+pr_id+'<fd>'+pr_name+'<fd>'+get_pcs_val+'<fd>'+get_crtn_val+'<fd>'+item_carton+'<fd>'+price+'<fd>'+dist_price+'<rd>'
 			
 			show_data=show_data+'<input  name="'+showData_id+'" id="'+showData_id+'" type="hidden" value="'+pr_name+'">'
 			if (localStorage.company_name=='UNILEVER'){
 			//=================Shima 17/10/20108===========
-			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%">'+get_crtn_val+'</td><td style="width:15%;">'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:25%;">'+pr_name+'</td><td style="width:15%;">'+TotalPrice.toFixed(2)+'</td><td style="width:15%;">&nbsp;&nbsp;'+Comision.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
+			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5">'+pr_name+'</td></tr><tr><td  style="width:80px;"><font style="color:#C30; font-size:9px">Ctn:</font>'+get_crtn_val+'</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amnt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Comn:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Total:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
 			}else
 			{
-				show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%">'+get_crtn_val+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:25%;">'+pr_name+'</td><td style="width:15%;">'+TotalPrice.toFixed(2)+'</td><td style="width:15%;">&nbsp;&nbsp;'+Comision.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
+				show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5">'+pr_name+'</td></tr><tr><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amnt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Comn:</font'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Total:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
 			}
 		//=================Shima 17/10/20108===========
 		}
 	}
 	
-	
-	show_data=show_data+'<table style="width:100%; background-color:#F0D2D6 "><tr><td style="width:15%">Amount</td><td style="width:15%;">'+totalTotalPrice.toFixed(2)+'&nbsp;&nbsp;</td><td>Comision:</td><td>'+Comision.toFixed(2)+'&nbsp;&nbsp;</td><td>Total: '+totalTotalDistPrice.toFixed(2)+'&nbsp;&nbsp;</td></tr></table>'
+	var totalComision=totalTotalPrice-totalTotalDistPrice
+	var Gtotal=totalTotalPrice-totalComision
+	show_data=show_data+'<table style="width:100%; background-color:#F0D2D6 "><tr><td style="width:15%">Amount</td><td style="width:15%;">'+totalTotalPrice.toFixed(2)+'&nbsp;&nbsp;</td><td>Comision:</td><td>'+totalComision.toFixed(2)+'&nbsp;&nbsp;</td><td>Total: '+Gtotal.toFixed(2)+'&nbsp;&nbsp;</td></tr></table>'
 	localStorage.prouct_stringSubmit=prouct_stringSubmit
 	localStorage.show_data=show_data
   	$("#show_data").html('');
@@ -12012,7 +12021,7 @@ function chemist_submit() {
 												$("#addCCategory").val('');
 												$("#chAddPhoto").val('');
 												/*homePage()*/
-												location.reload();
+												//location.reload();
 												$("#wait_image_chemAdd").hide();
 												$("#chSButton").show();
 						
