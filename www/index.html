@@ -323,7 +323,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
          <table width="100%" border="0">
           <tr>
             <td width="10%" align="left" onClick="reqList()"><img src="icon-arrow-bak.png" width="30" height="30" alt="Back" >	</td>
-            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"><input type="text" id="item_combo_id" style="width:100%; color:#000" placeholder="Search" onKeyUp="searchProduct()"  /></div></font></td>
+            <td align="center"><font style="font-size:18px; font-weight:bold"><div id="doc_start"><input type="text" id="product_combo_id" style="width:100%; color:#000" placeholder="Search" onKeyUp="searchProduct()"  /></div></font></td>
             <td width="10%" align="left" onClick="cartPage()"><img src="order.png" width="30" height="30" alt="Cart" >	</td>
           </tr>
         </table>
@@ -368,6 +368,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             </div>
              
             </div>
+            <div align="center" id="submitError"></div>
+            <div align="center">
+            <img id="wait_submit_img" style="width:50px" src="loading.gif" alt="">
+           </div>
+           
       <input type="submit" id="SaveButton" onClick="submit_data()"  style="width:100%; height:50px; background:skyblue;color: #FFF; font-size:20px;  border: none;" value="     Submit     "   /> 
              
              <br><br><br><br><br><br>
@@ -5877,4 +5882,4 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
 </body>
 
-</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
