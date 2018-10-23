@@ -4780,7 +4780,7 @@ function getCart(){
 	}
 	
 	
-	show_data=show_data+'<table style="width:100%; background-color:#F0D2D6 "><tr><td style="width:15%">Tota Amount</td><td style="width:15%;">'+totalTotalPrice.toFixed(2)+'&nbsp;&nbsp;</td><td>Comision:</td><td>'+Comision.toFixed(2)+'&nbsp;&nbsp;</td><td>Total: '+totalTotalDistPrice.toFixed(2)+'&nbsp;&nbsp;</td></tr></table>'
+	show_data=show_data+'<table style="width:100%; background-color:#F0D2D6 "><tr><td style="width:15%">Amount</td><td style="width:15%;">'+totalTotalPrice.toFixed(2)+'&nbsp;&nbsp;</td><td>Comision:</td><td>'+Comision.toFixed(2)+'&nbsp;&nbsp;</td><td>Total: '+totalTotalDistPrice.toFixed(2)+'&nbsp;&nbsp;</td></tr></table>'
 	localStorage.prouct_stringSubmit=prouct_stringSubmit
 	localStorage.show_data=show_data
   	$("#show_data").html('');
