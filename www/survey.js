@@ -4686,12 +4686,12 @@ function companyWsproduct(k){
 			
 			if (localStorage.company_name=='UNILEVER'){
 			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:80px"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:80px;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font></td></tr></table></li>'
+			productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:80px"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:80px;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font>'+'<input  name="'+product_info+'" id="'+product_info+'" value="'+productValueArray1+'" type="hidden">'	+'</td></tr></table></li>'
 			//=================Shima 17/10/20108===========
 			}else{
-				productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:80px"><input type="hidden" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font></td></tr></table></li>'
+				productListShow=productListShow+'<li style="" ><table style="width:100%"><tr><td style="width:80px"><input type="hidden" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font>'+'<input  name="'+product_info+'" id="'+product_info+'" value="'+productValueArray1+'" type="hidden">'	+'</td></tr></table></li>'
 			}
-			productListShow=productListShow+'<input  name="'+product_info+'" id="'+product_info+'" value="'+productValueArray1+'" type="hidden">'	
+			//productListShow=productListShow+'<input  name="'+product_info+'" id="'+product_info+'" value="'+productValueArray1+'" type="text">'	
 			
 			//product_name=product_name+'<input  name="'+productName+'" id="'+productName+'" type="text">'	
 							
@@ -4769,6 +4769,7 @@ function getCart(){
 			
 			var TotalDistPrice=TotalPcs*dist_price
 			var Comision=TotalPrice-TotalDistPrice
+			//alert (Comision)
 			totalTotalPrice=totalTotalPrice+TotalPrice
 			totalTotalDistPrice=totalTotalDistPrice+TotalDistPrice
 			var TotalShow=parseFloat(TotalPrice)-parseFloat(Comision)
@@ -4778,10 +4779,10 @@ function getCart(){
 			show_data=show_data+'<input  name="'+showData_id+'" id="'+showData_id+'" type="hidden" value="'+pr_name+'">'
 			if (localStorage.company_name=='UNILEVER'){
 			//=================Shima 17/10/20108===========
-			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5">'+pr_name+'</td></tr><tr><td  style="width:80px;"><font style="color:#C30; font-size:9px">Ctn:</font>'+get_crtn_val+'</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amnt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Comn:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Total:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
+			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5">'+pr_name+'</td></tr><tr><td  style="width:80px;"><font style="color:#C30; font-size:9px">Ctn:</font>'+get_crtn_val+'</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
 			}else
 			{
-				show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5">'+pr_name+'</td></tr><tr><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amnt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Comn:</font'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Total:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
+				show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5">'+pr_name+'</td></tr><tr><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
 			}
 		//=================Shima 17/10/20108===========
 		}
@@ -4789,7 +4790,12 @@ function getCart(){
 	
 	var totalComision=totalTotalPrice-totalTotalDistPrice
 	var Gtotal=totalTotalPrice-totalComision
-	show_data=show_data+'<table style="width:100%; background-color:#F0D2D6 "><tr><td style="width:15%">Amount</td><td style="width:15%;">'+totalTotalPrice.toFixed(2)+'&nbsp;&nbsp;</td><td>Comision:</td><td>'+totalComision.toFixed(2)+'&nbsp;&nbsp;</td><td>Total: '+Gtotal.toFixed(2)+'&nbsp;&nbsp;</td></tr></table>'
+	var show_dataTotal='<table width="100%" border="0" style="background-color:#FCF"><tr><td>Amt:'+totalTotalPrice.toFixed(2)+'</td><td>&nbsp;&nbsp;Com:'+totalComision.toFixed(2)+'</td><td>&nbsp;&nbsp;Tot:'+Gtotal.toFixed(2)+'</td></tr></table>'
+	
+	$("#TotalShow").html('');
+	$('#TotalShow').html(show_dataTotal);
+	
+	
 	localStorage.prouct_stringSubmit=prouct_stringSubmit
 	localStorage.show_data=show_data
   	$("#show_data").html('');
