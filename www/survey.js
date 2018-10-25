@@ -4821,12 +4821,13 @@ function cancel_pr(i){
 	var get_pcs_val=$("#"+p_Qt).val('');
 	var get_crtn_val=$("#"+c_Qt).val('');
 	
-	var prouct_stringSubmit=localStorage.prouct_stringSubmit;
-	var prouct_strCancel_list=prouct_stringSubmit.split('<rd>');
 	
-	var pr_replaceStr=prouct_strCancel_list[showData_id];
-	var pr_replace=pr_replaceStr.replace(pr_replaceStr,'');
-	localStorage.pr_replaceStr=pr_replace
+	//var prouct_stringSubmit=localStorage.prouct_stringSubmit;
+	//var prouct_strCancel_list=prouct_stringSubmit.split('<rd>');
+	
+	//var pr_replaceStr=prouct_strCancel_list[showData_id];
+	//var pr_replace=pr_replaceStr.replace(pr_replaceStr,'');
+	//localStorage.pr_replaceStr=pr_replace
 	getCart()
 	
 }
