@@ -4761,17 +4761,18 @@ function getCart(){
 		
 		var showData_id=''+i.toString()
 		if(parseInt(get_pcs_val) > 0 || parseInt(get_crtn_val) > 0 ){
-			
+			if (get_pcs_val==''){get_pcs_val=0}
+			if (get_crtn_val==''){get_crtn_val=0}
 			var TotalPcs=(get_crtn_val*parseInt(item_carton))+parseInt(get_pcs_val)
 			//alert (TotalPcs)
 		
-			var TotalPrice=TotalPcs*price
+			var TotalPrice=parseInt(TotalPcs)*parseFloat(price)
 			
 			var TotalDistPrice=TotalPcs*dist_price
 			var Comision=TotalPrice-TotalDistPrice
 			//alert (Comision)
-			totalTotalPrice=totalTotalPrice+TotalPrice
-			totalTotalDistPrice=totalTotalDistPrice+TotalDistPrice
+			totalTotalPrice=parseFloat(totalTotalPrice)+parseFloat(TotalPrice)
+			totalTotalDistPrice=parseFloat(totalTotalDistPrice)+parseFloat(TotalDistPrice)
 			var TotalShow=parseFloat(TotalPrice)-parseFloat(Comision)
 		
 			prouct_stringSubmit=prouct_stringSubmit+pr_id+'<fd>'+pr_name+'<fd>'+get_pcs_val+'<fd>'+get_crtn_val+'<fd>'+item_carton+'<fd>'+price+'<fd>'+dist_price+'<rd>'
@@ -4811,6 +4812,7 @@ function cartPage(){
 
 }
 function cancel_pr(i){
+	
 	var showData_id=i.toString()
 	
 	var p_Qt='pQt_'+i.toString()
