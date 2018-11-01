@@ -12116,6 +12116,9 @@ function chemist_update() {
 			
 			
 			location.reload();
+			$("#wait_image_chemAdd").hide();
+					$("#chemistUpdate").show();	$("#chSButton").show();
+			
 }
 
 
