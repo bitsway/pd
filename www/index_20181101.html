@@ -327,7 +327,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
             <input type="text" id="product_combo_id" style="width:80%; color:#000" placeholder="Search" onKeyUp="searchProduct()"  /></div></font></td>
            -->
             <td align="center" ><font style="font-size:18px; color:#000; font-weight:bold">
-            <select name="brand_list" onChange="searchbrand()" id="brand_list" style="width:200px">
+            <select name="brand_list" onChange="searchbrand()" id="brand_list">
             	<option value="Selec type" selected="selected">Select type</option>
             </select>
            </font></td>
@@ -4313,13 +4313,11 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
                 
 				<img id="wait_image_chemAdd" style="width:50px" src="loading.gif" alt="">		
                 <div id="error_chemist_add_page" style="color:#C00"></div>	
-                <div id="chemistSubmit" style="color:#C00">
-                	
+                <div id="SbuttonCH">
                 <input type="submit" id="chSButton" name="chSButton"  onClick="chemist_submit();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Submit"   />
                 	</div>
-                <div id="chemistUpdate">
-                	
-                <input type="submit" id="chUpdate" name="chUpdate"  onClick="chemist_update();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Update"   />
+                   <div id="UbuttonCH">
+                <input type="submit" id="chUButton" name="chUButton"  onClick="chemist_update();"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="Update"   />
                 	</div>
 				<br><br><br>
 				 
@@ -5919,4 +5917,4 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
     
 </body>
 
-</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+</html>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

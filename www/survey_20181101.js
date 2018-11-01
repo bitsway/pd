@@ -23,7 +23,7 @@ $.afui.useOSThemes=false;
 
 //var  apipath ='http://a007.yeapps.com/acme/medSearch/'
 var  apipath ='http://127.0.0.1:8000/pd/'
-var  apipath_photo ='http://i001.yeapps.com/image_hub/pd_image/pd_image/'
+//var  apipath_photo ='http://i001.yeapps.com/image_hub/pd_image/pd_image/'
 /******** jahangirEditedEnd16 apipath *****************/
 
 
@@ -526,8 +526,7 @@ function saved_Doc_set(i) {
 
 
 function homePage() {
-	$("#wait_image_login").hide();
-	$("#loginButton").show();
+	//alert('1')
 	var currentDate = new Date()
 	var day = currentDate.getDate();if(parseInt(day)<9)	{day="0" + day};
 	var month = currentDate.getMonth() + 1;if(parseInt(month)<9){month="0" +month};
@@ -1601,7 +1600,7 @@ function check_user() {
 	var cid=$("#cid").val().toUpperCase();
 	cid=$.trim(cid);
 	
-  //  var apipath_base_photo_dm ='http://127.0.0.1:8000/pd/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+    //var apipath_base_photo_dm ='http://127.0.0.1:8000/pd/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	var apipath_base_photo_dm ='http://w02.yeapps.com/pd/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	var user_id=$("#user_id").val();
@@ -1711,21 +1710,9 @@ function check_user() {
 													localStorage.cl_catStr=resultArray[8]
 													
 													localStorage.cl_subcatStr=resultArray[9]
-												//	localStorage.brandtStr=resultArray[10]
-									//alert (localStorage.base_url+'getBrand?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)			
-								$.ajax(localStorage.base_url+'getBrand?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
-										
-										type: 'POST',
-										timeout: 30000,
-										error: function(xhr) {
-										localStorage.brandtStr=''
-															},
-										success:function(data, status,xhr){	
-										localStorage.brandtStr=data
-										
-										}
-										 });	
+													localStorage.brandtStr=resultArray[10]
 												
+													
 														//=================Shima end 17/10/20108===========
 													var companyListShow=''
 													var company_i_Show=''
@@ -1832,7 +1819,7 @@ function check_user() {
 													
 													//$.afui.loadContent("#pageHome",true,true,'right');
 													homePage();
-											$("#wait_image_chemAdd").hide();
+											
 													
 
 										  }//else failed
@@ -4771,7 +4758,7 @@ function getCart(){
 	if (comp_index==3){proListStr=localStorage.pr_D}
 
 	var proList=proListStr.split('<rd>');
-	//alert(proList)
+	
 	var prouct_string=''
 	var show_dataList=''
 	
@@ -4791,8 +4778,7 @@ function getCart(){
 		proName=proList[i]
 		pr_id=proName.split('<fd>')[0]
 		
-		pr_name=proName.split('<fd>')[6]
-		
+		//pr_name=proName.split('<fd>')[1]+' | '+pr_id
 		var p_Qt='pQt_'+i.toString()
 		var c_Qt='cQt_'+i.toString()
 		var product_info='product_info'+i.toString()
@@ -4826,13 +4812,13 @@ function getCart(){
 			totalTotalDistPrice=parseFloat(totalTotalDistPrice)+parseFloat(TotalDistPrice)
 			var TotalShow=parseFloat(TotalPrice)-parseFloat(Comision)
 		
-			prouct_stringSubmit=prouct_stringSubmit+pr_id+'<fd>'+pr_name+'<fd>'+get_pcs_val+'<fd>'+get_crtn_val+'<fd>'+item_carton+'<fd>'+price+'<fd>'+dist_price+'<rd>'
+			prouct_stringSubmit=prouct_stringSubmit+pr_id+'<fd>'+get_pcs_val+'<fd>'+get_crtn_val+'<fd>'+item_carton+'<fd>'+price+'<fd>'+dist_price+'<rd>'
 			
 			show_data=show_data+'<input  name="'+showData_id+'" id="'+showData_id+'" type="hidden" value="'+pr_name+'">'
 			if (localStorage.company_name=='UNILEVER'){
 			//=================Shima 17/10/20108===========
 			//show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5">'+pr_name+'</td></tr><tr><td  style="width:80px;"><font style="color:#C30; font-size:9px">Ctn:</font>'+get_crtn_val+'</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
-			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5">'+pr_name+' </td></tr><tr><td  style="width:80px;"><font style="color:#C30; font-size:9px">Ctn:</font>'+get_crtn_val+'</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
+			show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5"></td></tr><tr><td  style="width:80px;"><font style="color:#C30; font-size:9px">Ctn:</font>'+get_crtn_val+'</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
 			}else
 			{
 				show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5"></td></tr><tr><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
@@ -4893,15 +4879,20 @@ function submit_page(){
 }
 
 function submit_data(){
-	//alert('dsf')
-	//$("#wait_submit_img").show();
-	$("#SaveButton").show();
-	//alert(localStorage.base_url+'dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&password='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude)
+	$("#wait_submit_img").show();
+	$("#SaveButton").hide();
+	alert(localStorage.base_url+'dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&password='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude)
 	
 	$.ajax(localStorage.base_url+'dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&password='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,{
 			type:'POST',
 			timeout: 30000,
-			 
+			 error: function(result) {
+						
+						$("#submitError").html("Network error has occurred please try again!");
+						$("#wait_image_login").hide();
+						$("#loginButton").show();
+					
+				  },
 			success: function(result){	
 				if (result=='Success'){
 					//alert('Submitted Successful')
@@ -4914,14 +4905,7 @@ function submit_data(){
 					$("#wait_submit_img").hide();
 					$("#SaveButton").show();
 				}
-			},
-			error: function(result) {
-						
-						$("#submitError").html("Network error has occurred please try again!");
-						$("#wait_image_login").hide();
-						$("#loginButton").show();
-					
-				  }
+			}
 	});	
 }
 
@@ -10537,6 +10521,131 @@ function docProfileSubmit() {
 	//$.afui.loadContent("#page_doctor_profile",true,true,'right');
 	}
 }
+//==============Chemist Edit===========
+function page_chemist_profile(getData) {
+	localStorage.market_client=getData
+	//$("#alShow").val(localStorage.market_client);
+	
+	var ChemistName=getData.split('|')[0]
+	var mClientMarket=getData.split('|')[2]
+	var mCltUn=getData.split('|')[3];
+	var mCltUp=getData.split('|')[4];
+	var mCltDis=getData.split('|')[5];
+	var mCltCntNm=getData.split('|')[6];
+	var mCltCntPn=getData.split('|')[7];
+	
+	var mCltCat=getData.split('|')[8];	
+	var photo=getData.split('|')[10];
+	cl_catStr=localStorage.cl_catStr
+	cl_subcatStr=localStorage.cl_subcatStr
+	
+	cl_catStrList=cl_catStr.split('<rd>')
+	$('#addCCategory').empty();
+	
+	for (var j=0; j < cl_catStrList.length; j++){
+		cat_type_id = cl_catStrList[j].split('<fd>')[0]
+        cat_type_name = cl_catStrList[j].split('<fd>')[1]
+		
+		var opt='<option value="'+cat_type_id+'|'+cat_type_name+'">'+cat_type_id+'|'+cat_type_name+'</option>'
+		 $('#addCCategory').append(opt);
+		
+	}
+	var Category=$("#addCCategory").val()
+	localStorage.Category=Category
+	var cc=$("#addCName").val(ChemistName).attr("readonly", true).css("background", "#ccc" );
+	var market=$("#market").val(mClientMarket).attr("readonly", true).css("background", "#ccc" );
+	
+	$("#union").val(mCltUn).attr("readonly", true).css("background", "#ccc" );
+	$("#upazila").val(mCltUp).attr("readonly", true).css("background", "#ccc" );
+	$("#district").val(mCltDis).attr("readonly", true).css("background", "#ccc" );
+	
+	$("#addCContactName").val(mCltCntNm).attr("readonly", true).css("background", "#ccc" );
+	$("#addCPhone").val(mCltCntPn).attr("readonly", true).css("background", "#ccc" );
+	$("#addCCategory").val(Category).attr("readonly", true).css("background", "#ccc" );
+	
+	$("#chAddPhoto").val(photo)
+	 $("#wait_image_chemAdd").hide();
+	 
+	 $("#UbuttonCH").show();
+	 $("#SbuttonCH").hide();
+	 
+	$.afui.loadContent("#page_chemist_add",true,true,'right');
+	//chemist_update()
+}
+//
+function chemist_update() {	
+	$(".market").html(localStorage.visit_market_show);
+	document.getElementById('myImagechAdd').src = '';
+	var market_Id=localStorage.visit_market_show.split('|')[1];
+	//alert(market_Id)
+	var visitDocId=localStorage.visit_client.split('|')[1]	
+	
+	var imageText="chAddPhoto"
+	var chPhoto=$("#"+imageText).val();
+	var now = $.now();
+	var imageName='ch_'+localStorage.user_id+now.toString()+'.jpg';	
+	
+	latitude=localStorage.latitude
+	longitude=localStorage.longitude
+	//alert(localStorage.base_url+'chemist_update?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+'&market_Id='+encodeURI(market_Id)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude)
+	
+	$.ajax({
+			 type: 'POST',
+			 url: localStorage.base_url+'chemist_update?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+'&market_Id='+encodeURI(market_Id)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
+			 
+			 success: function(result) {
+					$("#wait_image_chemAdd").hide();
+				 $("#chSButton").show();
+					if (result==''){
+						$("#chSButton").show();
+						$("#error_chemist_add_page").html('Sorry Network not available');
+					}else{					
+						var resultArray = result.split('<SYNCDATA>');			
+						if (resultArray[0]=='FAILED'){	
+							$("#chSButton").show();					
+							$("#error_chemist_add_page").html(resultArray[1]);								
+						
+						}else if (resultArray[0]=='UPDATE'){																								
+							
+							
+							
+							//uploadPhoto_docVisit(chPhoto, imageName);
+							
+							$("#error_chemist_add_page").html(resultArray[1]);
+							$("#wait_image_chemAdd").hide();
+							$("#chSButton").show();
+							
+							$("#addCName").val('');
+							$("#market").val('');
+							$("#union").val('');
+							$("#upazila").val('');
+							$("#district").val('');
+							
+							
+							$("#addCContactName").val('');
+							$("#addCPhone").val('');
+							$("#addCCategory").val('');
+							$("#chAddPhoto").val('');
+							/*homePage()*/
+							//location.reload();
+							$("#wait_image_chemAdd").hide();
+							$("#chSButton").show();
+	
+						}else{				
+							$("#wait_image_chemAdd").hide();
+							$("#chSButton").show();	
+							$("#error_chemist_add_page").html('Network Timeout. Please try again.');
+							}
+					}
+				  },
+			  error: function(result) {		
+				  $("#wait_image_chemAdd").hide();
+							$("#chSButton").show();	  
+				  $("#error_chemist_add_page").html('Network Timeout. Please try again.');		
+			  }
+		 });//end ajax
+				
+}
 
 function chemistProfileSubmit() {
 	$("#myerror_chemist_prof").html('' )
@@ -11649,7 +11758,7 @@ function holidaySubmit() {
 }
 
 //=================Shima start 17/10/20108===========
-function chemist_add() {
+function chemist_add() {	
 	$(".market").html(localStorage.visit_market_show);
 	document.getElementById('myImagechAdd').src = '';
 	$("#chemist_name").val("");
@@ -11686,8 +11795,6 @@ function chemist_add() {
 	$('#chSButton').show();
 	
 	$.afui.loadContent("#page_chemist_add",true,true,'right');
-	
-	$("#chemistUpdate").hide();	
 }
 
 
@@ -11809,6 +11916,8 @@ function chemist_approve(row_id){
 						chemist_pendingShow()
 						
 						
+						
+						
 					}else{				
 								
 						$("#chShow").html('Network Timeout. Please try again.');
@@ -11868,7 +11977,6 @@ function page_businessVolume() {
 
 //=================Shima start 17/10/20108===========
 function chemist_submit() {	
-
 	$(".market").html(localStorage.visit_market_show);
 	document.getElementById('myImagechAdd').src = '';
 	var market_Id=localStorage.visit_market_show.split('|')[1];
@@ -11896,7 +12004,7 @@ function chemist_submit() {
 	var Status=$("#addCStatus").val()
 	//var NumberofDoc=$("#addCNumberofDoc").val()
 	//var AvgPatientPerDay=$("#addCAvgPatientPerDay").val()
-	
+
 	var imageText="chAddPhoto"
 	var chPhoto=$("#"+imageText).val();
 	var now = $.now();
@@ -11948,8 +12056,7 @@ function chemist_submit() {
 												
 												$("#error_chemist_add_page").html(resultArray[1]);
 												$("#wait_image_chemAdd").hide();
-												$("#chemistSubmit").show();
-											
+												$("#chSButton").show();
 												
 												$("#addCName").val('');
 												$("#market").val('');
@@ -11965,7 +12072,7 @@ function chemist_submit() {
 												/*homePage()*/
 												//location.reload();
 												$("#wait_image_chemAdd").hide();
-												//$("#chSButton").show();
+												$("#chSButton").show();
 						
 											}else{				
 												$("#wait_image_chemAdd").hide();
@@ -11988,124 +12095,6 @@ function chemist_submit() {
 //=================Shima end 17/10/20108===========
 
 
-//==============Chemist Edit===========
-function page_chemist_profile(getData) {
-	localStorage.market_client=getData
-	//$("#alShow").val(localStorage.market_client);
-	
-	var ChemistName=getData.split('|')[0]
-	var mClientMarket=getData.split('|')[2]
-	var mCltUn=getData.split('|')[3];
-	var mCltUp=getData.split('|')[4];
-	var mCltDis=getData.split('|')[5];
-	var mCltCntNm=getData.split('|')[6];
-	var mCltCntPn=getData.split('|')[7];
-	
-	var mCltCat=getData.split('|')[8];	
-	var photo=getData.split('|')[10];
-	cl_catStr=localStorage.cl_catStr
-	cl_subcatStr=localStorage.cl_subcatStr
-	
-	cl_catStrList=cl_catStr.split('<rd>')
-	$('#addCCategory').empty();
-	
-	for (var j=0; j < cl_catStrList.length; j++){
-		cat_type_id = cl_catStrList[j].split('<fd>')[0]
-        cat_type_name = cl_catStrList[j].split('<fd>')[1]
-		
-		var opt='<option value="'+cat_type_id+'|'+cat_type_name+'">'+cat_type_id+'|'+cat_type_name+'</option>'
-		 $('#addCCategory').append(opt);
-		
-	}
-	var Category=$("#addCCategory").val()
-	localStorage.Category=Category
-	var cc=$("#addCName").val(ChemistName).attr("readonly", true).css("background", "#ccc" );
-	var market=$("#market").val(mClientMarket).attr("readonly", true).css("background", "#ccc" );
-	
-	$("#union").val(mCltUn).attr("readonly", true).css("background", "#ccc" );
-	$("#upazila").val(mCltUp).attr("readonly", true).css("background", "#ccc" );
-	$("#district").val(mCltDis).attr("readonly", true).css("background", "#ccc" );
-	
-	$("#addCContactName").val(mCltCntNm).attr("readonly", true).css("background", "#ccc" );
-	$("#addCPhone").val(mCltCntPn).attr("readonly", true).css("background", "#ccc" );
-	$("#addCCategory").val(Category).attr("readonly", true).css("background", "#ccc" );
-	
-	$("#chAddPhoto").val(photo)
-	$("#wait_image_chemAdd").hide();
-	$("#chemistSubmit").hide();
-	$("#chemistUpdate").show();
-	$.afui.loadContent("#page_chemist_add",true,true,'right');
-	//chemist_update()
-}
-//
-function chemist_update() {	
-	$(".market").html(localStorage.visit_market_show);
-	document.getElementById('myImagechAdd').src = '';
-	var market_Id=localStorage.visit_market_show.split('|')[1];
-	//alert(market_Id)
-	var visitDocId=localStorage.visit_client.split('|')[1]	
-	
-	var imageText="chAddPhoto"
-	var chPhoto=$("#"+imageText).val();
-	var now = $.now();
-	var imageName='ch_'+localStorage.user_id+now.toString()+'.jpg';	
-	
-	latitude=localStorage.latitude
-	longitude=localStorage.longitude
-	//alert(localStorage.base_url+'chemist_update?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_Id='+encodeURI(market_Id)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude)
-	
-	$.ajax({
-			 type: 'POST',
-			 url: localStorage.base_url+'chemist_update?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_Id='+encodeURI(market_Id)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
-			 
-			 success: function(result) {
-					$("#wait_image_chemAdd").hide();
-				 $("#chemistUpdate").show();
-					if (result==''){
-						$("#chemistUpdate").show();
-						$("#error_chemist_add_page").html('Sorry Network not available');
-					}else{					
-						var resultArray = result.split('<SYNCDATA>');			
-						if (resultArray[0]=='FAILED'){	
-							$("#chemistUpdate").show();					
-							$("#error_chemist_add_page").html(resultArray[1]);								
-						
-						}else if (resultArray[0]=='UPDATE'){																								
-							
-							uploadPhoto_docVisit(chPhoto, imageName);
-							
-							$("#error_chemist_add_page").html(resultArray[1]);
-							$("#wait_image_chemAdd").hide();
-							$("#chemistUpdate").show();
-							
-							$("#addCName").val('');
-							$("#market").val('');
-							$("#union").val('');
-							$("#upazila").val('');
-							$("#district").val('');
-							
-							
-							$("#addCContactName").val('');
-							$("#addCPhone").val('');
-							$("#addCCategory").val('');
-							$("#chAddPhoto").val('');
-							
-	
-						}else{				
-							$("#wait_image_chemAdd").hide();
-							$("#chemistUpdate").show();	
-							$("#error_chemist_add_page").html('Network Timeout. Please try again.');
-							}
-					}
-				  },
-			  error: function(result) {		
-				  $("#wait_image_chemAdd").hide();
-					$("#chemistUpdate").show();	  
-				  $("#error_chemist_add_page").html('Network Timeout. Please try again.');		
-			  }
-		 });//end ajax
-			
-}
 
 
 //=================BV===================
