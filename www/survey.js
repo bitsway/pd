@@ -12115,9 +12115,9 @@ function chemist_update() {
 		 });//end ajax
 			
 			
-			location.reload();
-			$("#wait_image_chemAdd").hide();
-					$("#chemistUpdate").show();	$("#chSButton").show();
+			//location.reload();
+//			$("#wait_image_chemAdd").hide();
+//					$("#chemistUpdate").show();	$("#chSButton").hide();
 			
 }
 
