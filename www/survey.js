@@ -11650,6 +11650,7 @@ function holidaySubmit() {
 
 //=================Shima start 17/10/20108===========
 function chemist_add() {
+	$("#error_chemist_add_page").html('');
 	$(".market").html(localStorage.visit_market_show);
 	document.getElementById('myImagechAdd').src = '';
 	$("#chemist_name").val("");
@@ -11990,6 +11991,7 @@ function chemist_submit() {
 
 //==============Chemist Edit===========
 function page_chemist_profile(getData) {
+	$("#error_chemist_add_page").html('');
 	localStorage.market_client=getData
 	//$("#alShow").val(localStorage.market_client);
 	
@@ -12039,6 +12041,7 @@ function page_chemist_profile(getData) {
 }
 //
 function chemist_update() {	
+	$("#error_chemist_add_page").html('');
 	$(".market").html(localStorage.visit_market_show);
 	document.getElementById('myImagechAdd').src = '';
 	var market_Id=localStorage.visit_market_show.split('|')[1];
