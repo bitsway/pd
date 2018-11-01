@@ -3474,19 +3474,23 @@ function marketNext() {
 			market_list=localStorage.market_client;
 			//alert (market_list)
 			//alert (market_list.indexOf(market_Id))
+			
+			
 			if (market_list.indexOf(market_Id)==-1){
 					$("#err_market_next").text("Sorry Network not available");	
 					$("#wait_image_unschedule_market").hide();		
 					$("#btn_unschedule_market").show();
 			}else{					
+					
 					var resultArray_0 = market_list.split('<'+market_Id+'>');	
 					var resultArray_1 = resultArray_0[1].split('</'+market_Id+'>');	
 					var m_client_string = resultArray_1[0];	
 					
 					//var resultArray = market_list.split('</'+market_Id+'>');			
 //					m_client_string=resultArray[0].replace('<'+market_Id+'>','');
-														
+												
 					if 	(m_client_string=='Retailer not available'){
+						
 						$("#err_market_next").text("Retailer not available");	
 						$("#wait_image_unschedule_market").hide();		
 						$("#btn_unschedule_market").show();
@@ -3494,12 +3498,12 @@ function marketNext() {
 					}
 					else{
 						//----------------
-						
+							
 						var visit_type="Unscheduled";
 						var scheduled_date="";
 						
 						//-----------------------------------
-									
+								
 						var mClientList = m_client_string.split('<rd>');
 						var mClientListShowLength=mClientList.length	
 						
@@ -11993,7 +11997,7 @@ function chemist_submit() {
 //==============Chemist Edit===========
 function page_chemist_profile(getData) {
 	$("#error_chemist_add_page").html('');
-	localStorage.market_client=getData
+	//localStorage.market_client=getData
 	//$("#alShow").val(localStorage.market_client);
 	
 	var ChemistName=getData.split('|')[0]
@@ -12110,6 +12114,8 @@ function chemist_update() {
 			  }
 		 });//end ajax
 			
+			
+			location.reload();
 }
 
 
