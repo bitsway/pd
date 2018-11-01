@@ -600,7 +600,7 @@ function homePage() {
 //		}
 		
 		$.afui.loadContent("#pageHome",true,true,'right');
-		location.reload();
+		//location.reload();
 		
 	//}
 }
