@@ -12033,9 +12033,12 @@ function page_chemist_profile(getData) {
 	$("#upazila").val(mCltUp).attr("readonly", true).css("background", "#ccc" );
 	$("#district").val(mCltDis).attr("readonly", true).css("background", "#ccc" );
 	
-	$("#addCContactName").val(mCltCntNm).attr("readonly", true).css("background", "#ccc" );
-	$("#addCPhone").val(mCltCntPn).attr("readonly", true).css("background", "#ccc" );
-	$("#addCCategory").val(Category).attr("readonly", true).css("background", "#ccc" );
+	<!--    ============Jolly15 start===========-->
+	$("#addCContactName").val(mCltCntNm);
+	$("#addCPhone").val(mCltCntPn);
+	$("#addCCategory").val(Category);
+	
+<!--    ============Jolly15 end===========-->
 	
 	$("#chAddPhoto").val(photo)
 	$("#wait_image_chemAdd").hide();
@@ -12058,14 +12061,25 @@ function chemist_update() {
 	var now = $.now();
 	var imageName='ch_'+localStorage.user_id+now.toString()+'.jpg';	
 	
+	<!--    ============Jolly15 start===========-->
+	var add_con= $("#addCContactName").val()
+	
+	var add_phn=$("#addCPhone").val();
+	var channel=$("#addCCategory").val();
+	
+<!--    ============Jolly15 end===========-->
+	
 	latitude=localStorage.latitude
 	longitude=localStorage.longitude
 	//alert(localStorage.base_url+'chemist_update?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_Id='+encodeURI(market_Id)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude)
+	//url: localStorage.base_url+'chemist_update?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_Id='+encodeURI(market_Id)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
 	$("#wait_image_chemAdd").show();
 	$("#chemistUpdate").hide();		
 	$.ajax({
 			 type: 'POST',
-			 url: localStorage.base_url+'chemist_update?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_Id='+encodeURI(market_Id)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude,
+			 <!--    ============Jolly15 start===========-->
+			 url: localStorage.base_url+'chemist_update?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_Id='+encodeURI(market_Id)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&add_con='+encodeURI(add_con)+'&add_phn='+encodeURI(add_phn)+'&channel='+encodeURI(channel),			 
+		<!--    ============Jolly15 end===========-->
 			 
 			 success: function(result) {
 					$("#wait_image_chemAdd").hide();
