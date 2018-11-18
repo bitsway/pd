@@ -11907,7 +11907,7 @@ function chemist_submit() {
 	var chPhoto=$("#"+imageText).val();
 	var now = $.now();
 	var imageName='ch_'+localStorage.user_id+now.toString()+'.jpg';	
-	
+	if (chPhoto==''){imageName=''}
 	ChemistName=ChemistName.replace(",","").replace("'","").replace(";","").replace('"','')
 	var error_flag=0
 	latitude=localStorage.latitude
@@ -11999,7 +11999,8 @@ function page_chemist_profile(getData) {
 	$("#error_chemist_add_page").html('');
 	//localStorage.market_client=getData
 	//$("#alShow").val(localStorage.market_client);
-	
+	var ChemistID=getData.split('|')[1]
+	localStorage.ChemistID=ChemistID
 	var ChemistName=getData.split('|')[0]
 	var mClientMarket=getData.split('|')[2]
 	var mCltUn=getData.split('|')[3];
@@ -12060,6 +12061,7 @@ function chemist_update() {
 	var chPhoto=$("#"+imageText).val();
 	var now = $.now();
 	var imageName='ch_'+localStorage.user_id+now.toString()+'.jpg';	
+	if (chPhoto==''){imageName=''}
 	
 	<!--    ============Jolly15 start===========-->
 	var add_con= $("#addCContactName").val()
@@ -12078,7 +12080,7 @@ function chemist_update() {
 	$.ajax({
 			 type: 'POST',
 			 <!--    ============Jolly15 start===========-->
-			 url: localStorage.base_url+'chemist_update?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&market_Id='+encodeURI(market_Id)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&add_con='+encodeURI(add_con)+'&add_phn='+encodeURI(add_phn)+'&channel='+encodeURI(channel),			 
+			 url: localStorage.base_url+'chemist_update?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&chemistID='+encodeURI(localStorage.ChemistID)+'&market_Id='+encodeURI(market_Id)+'&imageName='+encodeURI(imageName)+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&add_con='+encodeURI(add_con)+'&add_phn='+encodeURI(add_phn)+'&channel='+encodeURI(channel),			 
 		<!--    ============Jolly15 end===========-->
 			 
 			 success: function(result) {
