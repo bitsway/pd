@@ -11997,6 +11997,7 @@ function chemist_submit() {
 
 //==============Chemist Edit===========
 function page_chemist_profile(getData) {
+	$("#chAddPhoto").val('');
 	$("#error_chemist_add_page").html('');
 	//localStorage.market_client=getData
 	//$("#alShow").val(localStorage.market_client);
