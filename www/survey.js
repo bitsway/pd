@@ -11466,7 +11466,7 @@ function onFail_docVisitImage(message) {
 function getchAddImage() {
 	//navigator.camera.getPicture(onSuccessProfile, onFailProfile, { quality: 10,
 		//destinationType: Camera.DestinationType.FILE_URI });
-   navigator.camera.getPicture(onSuccess_getDocImage, onFail_getDocImage, { quality: 90,
+   navigator.camera.getPicture(onSuccess_getDocImage, onFail_getDocImage, { quality: 60,
 		targetWidth: 400,
 		destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });
 		
