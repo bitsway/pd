@@ -1676,7 +1676,7 @@ function check_user() {
 							localStorage.sync_date=today;
 							
 							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
-						
+							localStorage.cid='PD'
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 								
 								type: 'POST',
@@ -3520,9 +3520,10 @@ function marketNext() {
 							var mCltDis=mClientValueArray[5];
 							var mCltCntNm=mClientValueArray[6];
 							var mCltCntPn=mClientValueArray[7];
-							var mCltCat=mClientValueArray[8];
+							var mCltCat=mClientValueArray[8]+'-'+mClientValueArray[9];
+							
 							//alert (mCltCat)
-							var photo=mClientValueArray[10];
+							var photo=mClientValueArray[11];
 							
 							//alert (mClientID)
 							if(mClientID!=''){
@@ -11999,6 +12000,7 @@ function page_chemist_profile(getData) {
 	$("#error_chemist_add_page").html('');
 	//localStorage.market_client=getData
 	//$("#alShow").val(localStorage.market_client);
+	//alert (getData)
 	var ChemistID=getData.split('|')[1]
 	localStorage.ChemistID=ChemistID
 	var ChemistName=getData.split('|')[0]
@@ -12009,20 +12011,32 @@ function page_chemist_profile(getData) {
 	var mCltCntNm=getData.split('|')[6];
 	var mCltCntPn=getData.split('|')[7];
 	
-	var mCltCat=getData.split('|')[8];	
-	var photo=getData.split('|')[10];
+	var mCltCat=getData.split('|')[8].replace('-','|');	
+	var photo=getData.split('|')[9];
 	cl_catStr=localStorage.cl_catStr
 	cl_subcatStr=localStorage.cl_subcatStr
 	
 	cl_catStrList=cl_catStr.split('<rd>')
 	$('#addCCategory').empty();
-	
+	var opt='<option value="'+mCltCat+'">'+mCltCat+'</option>'
+		
+	$('#addCCategory').append(opt);
 	for (var j=0; j < cl_catStrList.length; j++){
 		cat_type_id = cl_catStrList[j].split('<fd>')[0]
         cat_type_name = cl_catStrList[j].split('<fd>')[1]
 		
 		var opt='<option value="'+cat_type_id+'|'+cat_type_name+'">'+cat_type_id+'|'+cat_type_name+'</option>'
+		
 		 $('#addCCategory').append(opt);
+		
+	}
+	//alert (photo)
+	if (photo!=''){
+		imageURI='http://i001.yeapps.com/image_hub/static/pd_image/'+photo
+		
+		var image = document.getElementById('myImagechAdd');
+		image.src = imageURI;
+		
 		
 	}
 	var Category=$("#addCCategory").val()
