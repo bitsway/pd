@@ -12056,7 +12056,7 @@ function page_chemist_profile(getData) {
 	
 <!--    ============Jolly15 end===========-->
 	
-	$("#chAddPhoto").val(photo)
+	//$("#chAddPhoto").val(photo)
 	$("#wait_image_chemAdd").hide();
 	$("#chemistSubmit").hide();
 	$("#chemistUpdate").show();
@@ -12077,7 +12077,7 @@ function chemist_update() {
 	var now = $.now();
 	var imageName='ch_'+localStorage.user_id+now.toString()+'.jpg';	
 	if (chPhoto==''){imageName=''}
-	
+	//alert (chPhoto)
 	<!--    ============Jolly15 start===========-->
 	var add_con= $("#addCContactName").val()
 	
