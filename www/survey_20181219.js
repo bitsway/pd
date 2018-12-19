@@ -126,24 +126,6 @@ var  apipath_photo ='http://i001.yeapps.com/image_hub/pd_image/pd_image/'
 		searchbrand()
 		//bonusCombo()
 		page_stock()
-		//<!--Nazma Azam 2018/12/01 start-->
-		
-		$("#area_client_cart_wait_submit_img").hide();
-		$('#area_combo_id_lv').empty();
-		$('#area_combo_id_lv').append(localStorage.areaMarketComb);
-		$('#client_combo_id_lv').empty();
-		$('#client_combo_id_lv').append(localStorage.area_m_client_list);
-		$('#client_area_requisition_combo_id_lv').empty();
-		$('#client_area_requisition_combo_id_lv').append(localStorage.companyListShow_clientArea);
-		$('#area_client_product_ul_list').empty();
-		$('#area_client_product_ul_list').append(localStorage.area_client_productListShow);
-		$("#area_show_data").empty();
-		$('#area_show_data').append(localStorage.area_client_show_data);
- 	  //  $('#area_client_brand_list').empty();
-	//	$('#area_client_brand_list').append(localStorage.brand_combo);
-	//	alert(localStorage.brand_combo)
-		//<!--Nazma Azam  2018/12/01 end-->
-		
 		
 		
 		$('#campaign_combo_id_lv').empty();
@@ -1379,13 +1361,6 @@ function clear_autho(){
 		localStorage.unschedule_market_cmb_id=''
 		
 		localStorage.profile_m_client_org_id=''
-
-//<!--Nazma Azam  2018/12/01 start-->
-
-
-		localStorage.areaMarketComb=''
-
-//<!--Nazma Azam  2018/12/01 end-->
 		
 		//----------
 		localStorage.campaign_string=''	
@@ -1485,16 +1460,6 @@ function afterSync(){
 		localStorage.marketInfoSubmitStr=''
 		localStorage.productOrderStr=''
 		localStorage.marchandizingInfoStr=''
-
-
-//<!--Nazma Azam  2018/12/01 start-->
-
-		localStorage.areaMarketComb=''
-		localStorage.area_client_prouct_stringSubmit=''
-		
-		localStorage.area_client_show_data=''
-
-//<!--Nazma Azam  2018/12/01 end-->
 		
 		localStorage.visit_plan_marketlist_combo=''
 		localStorage.visit_plan_marketlist_comboCteam=''
@@ -1637,8 +1602,8 @@ function check_user() {
 	var cid=$("#cid").val().toUpperCase();
 	cid=$.trim(cid);
 	
-   // var apipath_base_photo_dm ='http://127.0.0.1:8000/pd/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-	var apipath_base_photo_dm ='http://w02.yeapps.com/pd/syncmobile_417_new_ord/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+  //  var apipath_base_photo_dm ='http://127.0.0.1:8000/pd/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var apipath_base_photo_dm ='http://w02.yeapps.com/pd/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	var user_id=$("#user_id").val();
 	var user_pass=$("#user_pass").val();
@@ -1709,9 +1674,9 @@ function check_user() {
 							var today=  year + "-" + month + "-" + day
 							
 							localStorage.sync_date=today;
-							localStorage.cid='PD'
-						//	alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
 							
+							//alert (localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)
+							localStorage.cid='PD'
 							$.ajax(localStorage.base_url+'check_user_pharma?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
 								
 								type: 'POST',
@@ -1744,35 +1709,9 @@ function check_user() {
 														//=================Shima start 17/10/20108===========
 													localStorage.marketListStr=resultArray[6];
 													localStorage.market_client=resultArray[7];
-													//alert(localStorage.market_client)
 													localStorage.cl_catStr=resultArray[8]
 													
 													localStorage.cl_subcatStr=resultArray[9]
-													
-												//	Nazma Azam  2018/12/01 start
-													
-												var areaMarketList = localStorage.marketListStr.split('<rd>');
-												var areaMarketListShowLength=areaMarketList.length
-												var areaMarketComb='';
-												for (var a=0; a < areaMarketListShowLength; a++){
-												var areaMarketValueArray = areaMarketList[a].split('<fd>');
-												areaMarketID=areaMarketValueArray[0];
-												areaMarketName=areaMarketValueArray[1];
-												var areaNameID=areaMarketName+'|'+areaMarketID;
-												if(areaMarketID!=''){
-												areaMarketComb+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="areaNextLV(\''+areaNameID+'\')"><font class="name" style="font-size:18; font-weight:bold">'+areaNameID+'</a></font></li>';
-												
-													}
-												}
-												
-												localStorage.areaMarketComb=areaMarketComb;
-												$('#area_combo_id_lv').empty();
-												$('#area_combo_id_lv').append(localStorage.areaMarketComb);							
-												
-												
-												//	Nazma Azam  2018/12/01 end
-												
-													
 												//	localStorage.brandtStr=resultArray[10]
 									//alert (localStorage.base_url+'getBrand?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode)			
 								$.ajax(localStorage.base_url+'getBrand?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_pass='+localStorage.user_pass+'&synccode='+localStorage.synccode,{
@@ -1781,7 +1720,6 @@ function check_user() {
 										timeout: 30000,
 										error: function(xhr) {
 										localStorage.brandtStr=''
-										
 															},
 										success:function(data, status,xhr){	
 										localStorage.brandtStr=data
@@ -1791,13 +1729,6 @@ function check_user() {
 												
 														//=================Shima end 17/10/20108===========
 													var companyListShow=''
-
-													//==============Nazma Azam  2018/12/01 start
-													
-													var companyListShow_clientArea=''
-													
-													//==============Nazma Azam  2018/12/01 end
-
 													var company_i_Show=''
 													var company_name=''
 													localStorage.company_id=''
@@ -1817,35 +1748,15 @@ function check_user() {
 														companyListShow=companyListShow+'<li class="name"><a style="font-weight:bold" onClick="companyWsproduct(\''+input_id+'\')">'+companyValueArray+'</a></li>'
 													
 														//=================Shima end 17/10/20108===========
-														
-														//==============Nazma Azam  2018/12/01 start
-														
-														companyListShow_clientArea=companyListShow_clientArea+'<li class="name"><a style="font-weight:bold" onClick="companyAreaWsproduct(\''+input_id+'\')">'+companyValueArray+'</a></li>'
-														
-														//==============Nazma Azam  2018/12/01 end
-
 														company_i_Show=company_i_Show+'<input  name="'+input_id+'" id="'+input_id+'" value="'+companyValueArray+'" type="hidden">'
 												
 														company_id=company_id+'<input  name="'+input_id+'" id="'+input_id+'" type="hidden">'
 												
 													
 													}
-													
-													//==============Nazma Azam  2018/12/01 start
-													//alert(companyListShow_clientArea)
-													localStorage.companyListShow_clientArea=companyListShow_clientArea
-
-													$('#client_area_requisition_combo_id_lv').empty()
-													$('#client_area_requisition_combo_id_lv').append(localStorage.companyListShow_clientArea);
-
-													//==============Nazma Azam  2018/12/01 end
-													
-													
-													
 													localStorage.companyListShow=companyListShow
 													localStorage.companyValueArray=companyValueArray
 													localStorage.company_id=company_id
-													
 													
 													$('#req_ul_list').empty()
 													$('#req_ul_list').append(localStorage.companyListShow);
@@ -1868,11 +1779,11 @@ function check_user() {
 														if (i==3){var pr_D=productList[i].replace('<ITEMSTART>','');}
 															
 													}
-													localStorage.pr_A=pr_A//+'<company>SMC'
-													localStorage.pr_B=pr_B//+'<company>UNILEVER'
-													localStorage.pr_C=pr_C//+'<company>ARLA'
+													localStorage.pr_A=pr_A
+													localStorage.pr_B=pr_B
+													localStorage.pr_C=pr_C
 													localStorage.pr_D=pr_D
-													//alert(localStorage.pr_A)
+													
 													//=================Shima start 17/10/20108===========
 													var planMarketList = localStorage.marketListStr.split('<rd>');
 													var planMarketListShowLength=planMarketList.length	
@@ -3542,21 +3453,22 @@ function marketNextLV(lvalue) {
 function marketNext() {
 	
 	$("#unscheduled_m_client_combo_id").val('');
-	//alert('marketNext')
+	
 	market_name=$("#unschedule_market_combo_id").val();
 	
 	if(market_name=='' || market_name==0){
-		//alert('')
 			$("#err_market_next").text("Market required");
 		}else{
 			$("#err_market_next").text("");			
 			$("#btn_unschedule_market").hide();
 			$("#wait_image_unschedule_market").show();		
-			//alert('1')
+			
+			//visitMarketStr
 			localStorage.visit_market_show=market_name
 			var market_Id=market_name.split('|')[1];
 			
 			//alert (market_Id)
+			//var catType=$("#catCombo").val();
 			
 			//===========================Get market client list Start============================
 			market_list=localStorage.market_client;
@@ -3595,6 +3507,7 @@ function marketNext() {
 						var mClientList = m_client_string.split('<rd>');
 						var mClientListShowLength=mClientList.length	
 						
+						//var unscheduled_m_client_list='<option value="0" > Select Retailer</option>'
 						var unscheduled_m_client_list=''
 						
 						for (var i=0; i < mClientListShowLength; i++){
@@ -3617,10 +3530,12 @@ function marketNext() {
 
 									unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+mClientName+'|'+mClientID+'|'+mClientMarket+'|'+mCltUn+'|'+mCltUp+'|'+mCltDis+'|'+mCltCntNm+'|'+mCltCntPn+'|'+mCltCat+'|'+photo+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></table></li>';
 									
+									//unscheduled_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><a><font class="name" style="font-size:18; font-weight:600; color:#306161">'+mClientName+'| </font>'+mClientID+'</font></a></td></table></li>';
 							}
 						 }
 					
 					
+					//var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id');
 		
 					
 					var unscheduled_m_client_combo_ob=$('#unscheduled_m_client_combo_id_lv');
@@ -3660,669 +3575,6 @@ function marketNext() {
 		}		
 			
 }
-
-	//	Nazma Azam   2018/12/01 start
-
-function area_client_submit_data(){
-	
-	$("#area_client_cart_wait_submit_img").show();
-	$("#area_client_SaveButton").hide();
-	if(localStorage.area_client_prouct_stringSubmit != ''){
-	//alert(localStorage.base_url+'area_client_dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&password='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.prouct_stringSubmit+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude)
-	//$("#error_area_alert").val(localStorage.base_url+'area_client_dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&password='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.area_client_prouct_stringSubmit+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&client_area_show='+localStorage.client_area_show+'&client_getData='+localStorage.client_getData);
-	$.ajax(localStorage.base_url+'area_client_dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&password='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.area_client_prouct_stringSubmit+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&client_area_show='+localStorage.client_area_show+'&client_getData='+localStorage.client_getData,{
-			type:'POST',
-			timeout: 30000,
-			 
-			success: function(result){	
-				if (result=='Success'){
-					//alert('Submitted Successful')
-					$("#wait_submit_img").hide();
-					$("#area_client_SaveButton").show();
-					$.afui.loadContent("#msg_page",true,true,'right');
-					//$("#error_area_alert").val(localStorage.base_url+'area_client_dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&password='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.area_client_prouct_stringSubmit+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&client_area_show='+localStorage.client_area_show+'&client_getData='+localStorage.client_getData);
-				}
-				else{
-					$("#area_cart_submitError").html("Network error has occurred please try again!");
-					$("#area_client_cart_wait_submit_img").hide();
-					$("#area_client_SaveButton").show();
-				}
-			},
-			error: function(result) {
-						
-						$("#area_cart_submitError").html("Network error has occurred please try again!");
-						$("#area_client_cart_wait_submit_img").hide();
-						$("#loginButton").show();
-					
-				  }
-			});	
-	
-	}//if(localStorage.area_client_prouct_stringSubmit != '')
-	
-	else{
-		
-		$("#area_cart_submitError").html("Please Select Product And Add to Cart!");
-		$("#area_client_SaveButton").hide();
-		$("#area_client_cart_wait_submit_img").hide();}
-	
-}
-
-
-function area_client_getCart(){
-	
-	//var client_area_company_name = $("#area_cNameCart").html(localStorage.company_name);
-	//alert(localStorage.company_name)
-	var comp_index=localStorage.comp_index
-	//alert(comp_index)
-	if (comp_index==0){proListStr=localStorage.pr_A;}//localStorage.SMC = 'SMC';}
-	if (comp_index==1){proListStr=localStorage.pr_B;}//localStorage.UNILEVER = 'UNILEVER';}
-	if (comp_index==2){proListStr=localStorage.pr_C;}//localStorage.ARLA = 'ARLA';}
-	if (comp_index==3){proListStr=localStorage.pr_D;}
-	//alert(proListStr)
-	//var proList_com_name=proListStr.split('<company>')[1];
-	//var proList_com=proListStr.split('<company>')[0];
-	
-	var proList=proListStr.split('<rd>');
-	//alert(proList_com)
-	//alert(proList)
-
-	//alert(proList)
-	var prouct_string=''
-	var show_dataList=''
-	var show_dataS =''
-	var pr_id=''
-	var pr_name=''
-	var pQty=''
-	var cQty=''
-	var show_dataGet=''
-	var show_data_order=localStorage.area_client_data_show
-	var show_data=''
-	//alert (localStorage.area_client_data_show)
-	var prouct_stringSubmit=''
-	var PrSingleGret=''
-	var totalTotalPrice=0
-	var totalTotalDistPrice=0
-	//alert (localStorage.area_client_prouct_stringSubmit)
-	
-	
-	for (i=0; i<(proList.length); i++){
-		//alert (proList[i])
-		proName=proList[i]
-		//alert(proName)
-		pr_id=proName.split('<fd>')[0]
-	//	alert(pr_id)
-		pr_name=proName.split('<fd>')[6]
-		company=proName.split('<fd>')[7]
-		
-		
-		
-		var p_Qt='pQt_'+i.toString()
-		var c_Qt='cQt_'+i.toString()
-		var product_info='product_info'+i.toString()
-			
-		var get_pcs_val=$("#"+p_Qt).val();
-		var get_crtn_val=$("#"+c_Qt).val();
-		//var get_crtn_val=i;
-		var product_info_val=$("#"+product_info).val();
-	//	alert(c_Qt)
-		var item_carton=product_info_val.split('<fd>')[2]
-		//alert(item_carton)
-		var price=product_info_val.split('<fd>')[3]
-		var dist_price=product_info_val.split('<fd>')[4]
-		//alert(product_info_val)
-		//alert(parseInt(get_crtn_val))
-		
-	//	var showData_id=''+i.toString()
-		
-		var showData_id='product_info'+i.toString()
-		
-		
-		//alert (showData_id)
-	//	var showData_id=i.toString()
-		
-		if(parseInt(get_pcs_val) > 0 || parseInt(get_crtn_val) > 0 ){
-			
-					if (get_pcs_val==''){get_pcs_val=0}
-						if (get_crtn_val==''){get_crtn_val=0}
-							//var TotalPcs=(get_crtn_val*parseInt(item_carton))+parseInt(get_pcs_val)
-							//alert (TotalPcs)
-						
-							//var TotalPrice=parseInt(TotalPcs)*parseFloat(price)
-//							
-//							var TotalDistPrice=TotalPcs*dist_price
-//							var Comision=TotalPrice-TotalDistPrice
-//							//alert (Comision)
-//							totalTotalPrice=parseFloat(totalTotalPrice)+parseFloat(TotalPrice)
-//							totalTotalDistPrice=parseFloat(totalTotalDistPrice)+parseFloat(TotalDistPrice)
-//							var TotalShow=parseFloat(TotalPrice)-parseFloat(Comision)
-							
-							var PrSingleGret=localStorage.company_id+'<fd>'+localStorage.company_name+'<fd>'+pr_id+'<fd>'+pr_name+'<fd>'+get_pcs_val+'<fd>'+get_crtn_val+'<fd>'+item_carton+'<fd>'+price+'<fd>'+dist_price+'<rd>'
-							var productInfo=$("#"+showData_id).val();
-							
-							if (localStorage.area_client_prouct_stringSubmit.indexOf(pr_id)!=-1){
-								area_client_prouct_stringSubmitList=(localStorage.area_client_prouct_stringSubmit).split('<rd>')
-								//alert(localStorage.area_client_prouct_stringSubmit)
-								
-									for (var x=0; x < area_client_prouct_stringSubmitList.length-1; x++){
-										var SingleProductInfo=area_client_prouct_stringSubmitList[x]+'<rd>'
-										//alert (SingleProductInfo)
-										
-										if (SingleProductInfo.indexOf(pr_id)!=-1){
-											prouct_stringSubmit=localStorage.area_client_prouct_stringSubmit.replace(SingleProductInfo,PrSingleGret)	
-											localStorage.area_client_prouct_stringSubmit=prouct_stringSubmit
-										}
-										
-									}
-									
-									
-																		
-								}
-
-							else{
-							//	alert (PrSingleGret)
-								//prouct_stringSubmit=prouct_stringSubmit+PrSingleGret
-								localStorage.area_client_prouct_stringSubmit=localStorage.area_client_prouct_stringSubmit+PrSingleGret
-								//alert(localStorage.area_client_prouct_stringSubmit)
-								
-							}
-							
-							//localStorage.area_client_show_data=localStorage.area_client_show_data+show_data
-							
-					}//if(parseInt(get_pcs_val) > 0 || parseInt(get_crtn_val) > 0 ){
-			}	//For loop
-			//alert(localStorage.area_client_prouct_stringSubmit)
-			
-			area_client_prouct_stringSubmitList=(localStorage.area_client_prouct_stringSubmit).split('<rd>')
-			//alert (localStorage.area_client_prouct_stringSubmit)
-			//alert (area_client_prouct_stringSubmitList.length)
-			var totalTotalPrice=0
-			var totalTotalDistPrice=0
-			for (var i=0; i < area_client_prouct_stringSubmitList.length-1; i++){
-				var Show_Single=area_client_prouct_stringSubmitList[i]
-				//alert (Show_Single)
-				compID_id=Show_Single.split('<fd>')[0]
-				compName=Show_Single.split('<fd>')[1]
-				
-				pr_id=Show_Single.split('<fd>')[2]
-				pr_name=Show_Single.split('<fd>')[3]
-				
-				
-				var get_pcs_val=Show_Single.split('<fd>')[4]
-				var get_crtn_val=Show_Single.split('<fd>')[5]
-				var item_carton=Show_Single.split('<fd>')[6]
-				var price=Show_Single.split('<fd>')[7]
-				var dist_price=Show_Single.split('<fd>')[8]
-				
-				var TotalPcs=(get_crtn_val*parseInt(item_carton))+parseInt(get_pcs_val)
-				var TotalPrice=parseInt(TotalPcs)*parseFloat(price)
-							
-				var TotalDistPrice=TotalPcs*dist_price
-				var Comision=TotalPrice-TotalDistPrice
-				
-				totalTotalPrice=parseFloat(totalTotalPrice)+parseFloat(TotalPrice)
-				totalTotalDistPrice=parseFloat(totalTotalDistPrice)+parseFloat(TotalDistPrice)
-				var TotalShow=parseFloat(TotalPrice)-parseFloat(Comision)
-				
-				
-
-				var showData_id='product_info'+i.toString()
-				
-				show_data=show_data+'<input  name="'+showData_id+'" id="'+showData_id+'" type="hidden" value="'+Show_Single+'">'
-				
-				//Nazma Azam 2018/12/11 start	
-				
-				if (compName=='UNILEVER'){
-					show_data=show_data+'<li  ><table style="width:100%"><tr><td colspan="5"><font style="color:#FF00CC; font-size:15px">'+compName+' | '+pr_name+' | '+pr_id+' </font></td></tr><tr><td  style="width:80px;"><font style="color:#C30; font-size:9px">Ctn:</font>'+get_crtn_val+'</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="area_client_cancel_pr(\''+pr_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
-				}else
-				{
-					
-					show_data=show_data+'<li  ><table style="width:100%"><tr><td colspan="5"><font style="color:#FF00CC; font-size:15px">'+compName+' | '+pr_name+' | '+pr_id+'</font></td></tr><tr><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="area_client_cancel_pr(\''+pr_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
-				}	
-				
-				//Nazma Azam 2018/12/11 end	
-				
-			}//Second for loop
-			
-		//	if (localStorage.area_client_show_data == ''){
-			localStorage.area_client_show_data=show_data
-			//}
-			
-		//	else{
-			//	localStorage.area_client_show_data=localStorage.area_client_show_data+show_data
-				//	}
-			
-			//alert(prouct_stringSubmit)
-			var totalComision=totalTotalPrice-totalTotalDistPrice
-			var Gtotal=totalTotalPrice-totalComision
-			var show_dataTotal='<table width="100%" border="0" style="background-color:#FCF"><tr><td>Amt:'+totalTotalPrice.toFixed(2)+'</td><td>&nbsp;&nbsp;Com:'+totalComision.toFixed(2)+'</td><td>&nbsp;&nbsp;Tot:'+Gtotal.toFixed(2)+'</td></tr></table>'
-				
-				
-	//Nazma Azam 2018/12/11 start	
-
-	$("#area_cart_TotalShow").html('');
-	$('#area_cart_TotalShow').html(show_dataTotal);
-	
-	
-	//Nazma Azam 2018/12/11 end	
-	
-	
-  	$("#area_show_data").html('');
-	$('#area_show_data').html(localStorage.area_client_show_data);
-	//alert (localStorage.area_client_show_data)
-	//alert (localStorage.area_client_prouct_stringSubmit)
-	getLocationInfoSubmit()
-}
-
-function area_client_cancel_pr(pr_id){
-	
-	//var showData_id='product_info'+i.toString()
-	//var cInfo=$("#"+showData_id).val();
-	//alert (cInfo)
-	var area_client_prouct_stringSubmit=localStorage.area_client_prouct_stringSubmit
-	
-	area_client_prouct_stringSubmitList=area_client_prouct_stringSubmit.split('<rd>')
-	
-	for (var z=0; z < area_client_prouct_stringSubmitList.length-1; z++){
-		var singlePrinfo=area_client_prouct_stringSubmitList[z]
-		//alert (singlePrinfo)
-		//var prID=cInfo.split('<fd>')[0]
-		if (singlePrinfo.indexOf(pr_id)!=-1){
-			var replaceString=area_client_prouct_stringSubmit.replace(singlePrinfo+'<rd>','')
-			localStorage.area_client_prouct_stringSubmit=replaceString
-		}
-	}
-	 //alert (localStorage.area_client_prouct_stringSubmit)
-	 new_area_client_getCart()
-	
-}
-
-function new_area_client_getCart(){
-//	alert(localStorage.area_client_prouct_stringSubmit)
-	var areaDelSaveData=localStorage.area_client_prouct_stringSubmit
-//	alert(areaDelSaveData)
-	var areaDelSaveDataList = areaDelSaveData.split('<rd>');
-	var areaDelSaveDataListLength=areaDelSaveDataList.length
-	var areaSaveStr=''
-	var show_data=''
-	var totalTotalPrice=0
-	var totalTotalDistPrice=0
-
-
-	for (var z=0; z < area_client_prouct_stringSubmitList.length-1 ; z++){
-				var Show_Single=areaDelSaveDataList[z]
-				//alert(Show_Single)
-				if(Show_Single != ''){
-				compID_id=Show_Single.split('<fd>')[0]
-				compName=Show_Single.split('<fd>')[1]
-				//alert (compName)
-				pr_id=Show_Single.split('<fd>')[2]
-				pr_name=Show_Single.split('<fd>')[3]				
-				var get_pcs_val=Show_Single.split('<fd>')[4]
-				var get_crtn_val=Show_Single.split('<fd>')[5]
-				var item_carton=Show_Single.split('<fd>')[6]
-				var price=Show_Single.split('<fd>')[7]
-				var dist_price=Show_Single.split('<fd>')[8]
-				//alert(dist_price)
-				var TotalPcs=(get_crtn_val*parseInt(item_carton))+parseInt(get_pcs_val)
-				var TotalPrice=parseInt(TotalPcs)*parseFloat(price)
-				//alert(TotalPrice)			
-				var TotalDistPrice=TotalPcs*dist_price
-				var Comision=TotalPrice-TotalDistPrice
-				
-				totalTotalPrice=parseFloat(totalTotalPrice)+parseFloat(TotalPrice)
-				//alert()
-				totalTotalDistPrice=parseFloat(totalTotalDistPrice)+parseFloat(TotalDistPrice)
-				var TotalShow=parseFloat(TotalPrice)-parseFloat(Comision)
-
-				var showData_id='product_info'+z.toString()
-				
-				show_data=show_data+'<input  name="'+showData_id+'" id="'+showData_id+'" type="hidden" value="'+Show_Single+'">'
-				
-				//Nazma Azam 2018/12/11 start
-				
-				//alert(show_data)
-				if (compName=='UNILEVER'){
-					show_data=show_data+'<li  ><table style="width:100%"><tr><td colspan="5"><font style="color:#FF00CC; font-size:15px">'+compName+' | '+pr_name+' | '+pr_id+' </font></td></tr><tr><td  style="width:80px;"><font style="color:#C30; font-size:9px">Ctn:</font>'+get_crtn_val+'</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="area_client_cancel_pr(\''+z+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
-				}else
-				{
-					
-					show_data=show_data+'<li  ><table style="width:100%"><tr><td colspan="5"><font style="color:#FF00CC; font-size:15px">'+compName+' | '+pr_name+' | '+pr_id+'</font> </td></tr><tr><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="area_client_cancel_pr(\''+z+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
-				
-				//Nazma Azam 2018/12/11 end
-				
-				}	
-				
-			}//if(Show_Single != ''){
-			
-			//Nazma Azam 2018/12/11 start
-			
-//			localStorage.area_client_show_data=show_data
-//			//alert(show_data)
-//
-//			//alert(prouct_stringSubmit)
-//			var totalComision=totalTotalPrice-totalTotalDistPrice
-//			var Gtotal=totalTotalPrice-totalComision
-//			var show_dataTotal='<table width="100%" border="0" style="background-color:#FCF"><tr><td>Amt:'+totalTotalPrice.toFixed(2)+'</td><td>&nbsp;&nbsp;Com:'+totalComision.toFixed(2)+'</td><td>&nbsp;&nbsp;Tot:'+Gtotal.toFixed(2)+'</td></tr></table>'
-//				
-//			$('#area_show_data').empty()
-//			$('#area_show_data').html(localStorage.area_client_show_data);
-//			getLocationInfoSubmit()
-	
-			} //Second for loop 
-
-			localStorage.area_client_show_data=show_data
-			//alert(show_data)
-
-			//alert(prouct_stringSubmit)
-			var totalComision=totalTotalPrice-totalTotalDistPrice
-			var Gtotal=totalTotalPrice-totalComision
-			var show_dataTotal='<table width="100%" border="0" style="background-color:#FCF"><tr><td>Amt:'+totalTotalPrice.toFixed(2)+'</td><td>&nbsp;&nbsp;Com:'+totalComision.toFixed(2)+'</td><td>&nbsp;&nbsp;Tot:'+Gtotal.toFixed(2)+'</td></tr></table>'
-
-			$("#area_cart_TotalShow").html('');
-			$('#area_cart_TotalShow').html(show_dataTotal);
-
-				
-			$('#area_show_data').empty()
-			$('#area_show_data').html(localStorage.area_client_show_data);
-			getLocationInfoSubmit()
-				
-			//Nazma Azam 2018/12/11 end
-
-}
-
-
-function area_client_cartPage(){
-	area_client_getCart()
-	var prouct_stringSubmit=localStorage.area_client_prouct_stringSubmit
-	//alert(prouct_stringSubmit.length)
-	if (prouct_stringSubmit.length >0) {
-		$.afui.loadContent("#area_client_cart_page",true,true,'right');
-		$("#area_cart_submitError").html('');
-		$("#area_client_SaveButton").show();}
-	
-	
-
-}
-
-
-
-function area_client_reqList(){
-	
-	//$("#client_area_requisition_combo_id_lv").val();
-	var company_combo_list=localStorage.companyListShow_clientArea;
-	//alert($("#client_area_requisition_combo_id_lv").val())
-	$('#client_area_requisition_combo_id_lv').empty();
-	$('#client_area_requisition_combo_id_lv').append(company_combo_list);
-	$.afui.loadContent("#page_client_area_requisition",true,true,'right');	
-}
-
-
-function area_client_product_list(){
-	var show_combo_list=localStorage.area_client_show_data;
-  	$("#area_show_data").empty();
-	$('#area_show_data').append(show_combo_list);
-
-	$.afui.loadContent("#area_client_product_page",true,true,'right');	
-}
-
-
-
-function companyAreaWsproduct(k){
-	localStorage.brand_combo = ''
-	//var re = $('#client_area_requisition_combo_id_lv').val()
-	//alert(re)
-	var company_combo_list_str=localStorage.companyListShow_clientArea;
-	//alert(company_combo_list_str)
-	$("#area_market_combo_id").val(k);
-//	nazma 2018/12/09
-	//$('#area_show_data').html('')
-	var input_id=k.toString()
-	
-	localStorage.comp_index=input_id
-	//alert(localStorage.comp_index)
-	//alert(localStorage.companyListStr)
-	var companyList = localStorage.companyListStr.split('<rdrd>');
-	var comStr=companyList[input_id]
-	
-	var company_name = comStr.split('<fdfd>')[0];
-	var company_id = comStr.split('<fdfd>')[1];
-	//alert(localStorage.company_id)
-	
-	//Nazma new
-	//if (company_id!=localStorage.company_id){localStorage.area_client_prouct_stringSubmit=''}
-	
-	localStorage.company_name=company_name
-	localStorage.company_id=company_id
-	
-	//alert(localStorage.company_id)
-	//alert (localStorage.company_name)
-	//$("#area_cNameCart").html(localStorage.company_name);
-	//alert (localStorage.company_name)
-
-
-	if(input_id=='0'){
-		var proList=localStorage.pr_A.split('<rd>');
-		company_name = 'SMC'
-	}
-	else if(input_id=='1') {
-		var proList=localStorage.pr_B.split('<rd>');
-		company_name = 'UNILEVER'
-	}
-	else if(input_id=='2') {
-		var proList=localStorage.pr_C.split('<rd>');
-		company_name = 'ARLA'
-	}
-	else if(input_id=='3') {
-		var proList=localStorage.pr_D.split('<rd>');
-	}
-	//alert(proList)
-	
-		var productLength=proList.length;
-		var productListShow=''
-		//alert('productListShow')
-		var product_p_Show=''
-		var product_name=''
-		for (var p=0; p < productLength; p++){
-		var productName = proList[p];
-			var product_p='prId_'+p.toString()
-			var p_Qt='pQt_'+p.toString()
-			var c_Qt='cQt_'+p.toString()
-			var product_info='product_info'+p.toString()
-			//var price=productValueArray1.split('<fd>')[3]
-			//var dPrice=productValueArray1.split('<fd>')[4]
-			//var comn=parseFloat(price)-parseFloat(dPrice)
-			var productValueArray1 = proList[p];
-			//alert(productValueArray1)
-			//var pShow=productValueArray1.split('<fd>')[1]+'|'+productValueArray1.split('<fd>')[0]+'|'+productValueArray1.split('<fd>')[5]+'<br><font style="color:#C30; font-size:9px">ctn:'+productValueArray1.split('<fd>')[2]+'Pcs Price:'+productValueArray1.split('<fd>')[3]+'</font>'//+' Comn:'+productValueArray1.split('<fd>')[4]
-			
-			var pShow=productValueArray1.split('<fd>')[6]+'|'+productValueArray1.split('<fd>')[0]+'|'+productValueArray1.split('<fd>')[5]+'<br><font style="color:#C30; font-size:9px">ctn:'+productValueArray1.split('<fd>')[2]+'Pcs Price:'+productValueArray1.split('<fd>')[3]+'</font>'
-			
-			
-			var productCompanyShow=productValueArray1+'<fd>'+company_name
-			
-			if (localStorage.company_name=='UNILEVER'){
-			//=================Shima 17/10/20108===========
-			productListShow=productListShow+'<li style="" class="name" ><table style="width:100%"><tr><td style="width:80px"><input type="number" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/></td><td style="width:80px;"><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font>'+'<input  name="'+product_info+'" id="'+product_info+'" value="'+productCompanyShow+'" type="hidden">'	+'</td></tr></table></li>'
-			//=================Shima 17/10/20108===========
-			}else{
-				productListShow=productListShow+'<li style="" class="name"><table style="width:100%"><tr><td style="width:80px"><input type="hidden" name="'+c_Qt+'" id="'+c_Qt+'" style="color:#000;" placeholder="c"/><input type="number" name="'+p_Qt+'" id="'+p_Qt+'" style="color:#000;" placeholder="p"/></td><td><font class="name">'+pShow+'</font>'+'<input  name="'+product_info+'" id="'+product_info+'" value="'+productCompanyShow+'" type="hidden">'	+'</td></tr></table></li>'
-			}
-							
-		}
-		localStorage.area_client_productListShow=productListShow
-		//alert(localStorage.area_client_productListShow)
-		$('#area_client_product_ul_list').empty()
-		$('#area_client_product_ul_list').append(localStorage.area_client_productListShow);
-	
-	
-									
-	area_client_product_list()	
-	
-	//-----------------------------------
-	brand_StrM=localStorage.brandtStr
-	
-	//alert(brand_Str)
-	brand_Str=brand_StrM.split('<'+company_name+'>')[1].split('<rd>')[0]
-	//alert(brand_Str)
-	br_brnStrList=brand_Str.split('<fd>')
-	
-	$('#area_client_brand_list').empty();
-	
-	for (var b=0; b < br_brnStrList.length-1; b++){
-			brnd_name = br_brnStrList[b]
-			var brnd='<option value="'+brnd_name+'">'+brnd_name+'</option>'
-			// $('#area_client_brand_list').append(brnd);
-			 var brand_combo =  $('#area_client_brand_list').append(brnd);
-			 localStorage.brand_combo=brand_combo;
-			
-		}
-}
-
-
-
-
-function back_clientPage() {
-	$.afui.loadContent("#page_client",true,true,'right');
-}
-
-
-function client_reqList(getData){
-	var mClientList = getData.split('|')[0]
-
-				//if (localStorage.client_getData.indexOf(mClientList)==-1){
-						//alert(localStorage.client_getData)
-						localStorage.area_client_prouct_stringSubmit = ''
-						localStorage.client_getData = getData;
-						localStorage.area_client_show_data=''
-						
-						//alert('sorry')
-					
-			//}
-	
-	//alert(localStorage.client_getData)
-	var company_combo_list=localStorage.companyListShow_clientArea;
-	//alert(company_combo_list)
-	$('#client_area_requisition_combo_id_lv').empty();
-	$('#client_area_requisition_combo_id_lv').append(company_combo_list);
-	//alert($("#client_area_requisition_combo_id_lv").val())
-	$.afui.loadContent("#page_client_area_requisition",true,true,'right');	
-}
-
-
-function areaNextLV(lvalue) {
-	//alert(lvalue)
-	//localStorage.client_area_show='' ;
-	 $("#area_market_combo_id").val(lvalue);
-	//alert($("#area_market_combo_id").val(lvalue))
-	getLocationInfo_ready()
-	clientNext();	
-
-		}		
-
-function clientNext() {
-	//alert(localStorage.client_area_show)
-	client_name=$("#area_market_combo_id").val();
-	//alert(client_name)
-	if(client_name=='' || client_name==0){		
-				$("#error_client").text("Client required");			
-			}
-	else{
-				$("#error_client").text("");							
-			//	$("#wait_image_unschedule_market").show();
-			
-				localStorage.client_getData = '';		
-				localStorage.client_area_show='' ;
-				localStorage.client_area_show=client_name
-				//alert(localStorage.client_area_show)
-				var client_Id=client_name.split('|')[1];
-				
-			//	alert (client_Id)
-				//===========================Get market client list Start============================
-				client_list=localStorage.market_client;
-				//alert(localStorage.market_client)
-				if (client_list.indexOf(client_Id)==-1){
-					$("#error_client").text("Sorry Network not available");	
-				//	$("#wait_image_unschedule_market").hide();		
-				//	$("#btn_unschedule_market").show();
-			}else{	
-					var resultArray_0 = client_list.split('<'+client_Id+'>');	
-					var resultArray_1 = resultArray_0[1].split('</'+client_Id+'>');	
-					var m_client_string = resultArray_1[0];	
-					//alert(m_client_string)
-					if 	(m_client_string=='Retailer not available'){
-						
-						$("#error_client").text("Retailer not available");	
-					//	$("#wait_image_unschedule_market").hide();		
-					//	$("#error_area").show();
-						
-					}
-					else{
-
-						var mClientList = m_client_string.split('<rd>');
-						var mClientListShowLength=mClientList.length
-					//	alert(mClientList)
-						//$("#error_area").html(mClientList);
-						var area_m_client_list=''
-						
-						for (var i=0; i < mClientListShowLength; i++){
-						  var mClientValueArray = mClientList[i].split('<fd>');
-
-						  var  client_id = mClientValueArray[0];
-						  var   name = mClientValueArray[1];
-						 // alert(name)
-						  var  market_ad = mClientValueArray[2];
-						  var  union_ad = mClientValueArray[3];
-						  var  upazila = mClientValueArray[4];
-						  var  district = mClientValueArray[5];
-						  var  owner_name = mClientValueArray[6];
-						  var  contact_no1 = mClientValueArray[7];
-						  var  category_id = mClientValueArray[8];
-						  var  category_name = mClientValueArray[9];
-						  var  market_id = mClientValueArray[10];
-						  var  photo = mClientValueArray[11];
-						  if(client_id!=''){
-							  area_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><a onClick="client_reqList(\''+client_id+'|'+name+'|'+market_ad+'|'+union_ad+'|'+upazila+'|'+district+'|'+owner_name+'|'+contact_no1+'|'+category_id+'|'+category_name+'|'+market_id+'|'+photo+'\')"><font class="name" style="font-size:18; font-weight:600; color:#306161">'+name+' | </font>'+client_id+'</font></a></li>';
-								//	area_m_client_list+='<li class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-location" style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table><tr><td><img onClick="page_chemist_profile(\''+client_id+'|'+name+'|'+market_ad+'|'+union_ad+'|'+upazila+'|'+district+'|'+owner_name+'|'+contact_no1+'|'+category_id+'|'+category_name+'|'+market_id+'|'+photo+'\')" style="height:20px; width:20px" src="editProfile.png">&nbsp;&nbsp;&nbsp;&nbsp;</td><td><a><font class="name" style="font-size:18; font-weight:600; color:#306161">'+name+' | </font>'+client_id+'</font></a></td></table></li>';
-								//	alert(area_m_client_list)
-							}
-
-						}	//for
-
-						localStorage.area_m_client_list=area_m_client_list;
-					//	alert(localStorage.area_m_client_list)
-						$('#client_combo_id_lv').empty();
-						//alert($('#client_combo_id_lv').val())
-						
-						$('#client_combo_id_lv').append(localStorage.area_m_client_list);							
-					//	alert($('#client_combo_id_lv').val())
-						//alert(localStorage.area_m_client_list)		
-		
-					}	//else
-				
-			}	//else
-
-			//============================Get client list end===============================
-	//	alert(localStorage.client_area_show);
-		$.afui.loadContent("#page_client",true,true,'right');
-
-		}		//else
-}
-
-
-function area_page() {
-
-			$('#area_combo_id_lv').empty();
-			$('#area_combo_id_lv').append(localStorage.areaMarketComb);	
-			//alert(localStorage.areaMarketComb)
-			$.afui.loadContent("#page_area",true,true,'right');
-
-
-			//============================Get area list end===============================
-		}		
-
-
-//	Nazma Azam   2018/12/01 end
-
 function marketNext_sup() {
 	$("#unscheduled_m_client_combo_id").val('');
 	
@@ -4389,11 +3641,8 @@ function marketNext_sup() {
 	
 								else if (resultArray[0]=='SUCCESS'){
 									
-								//	Nazma Azam  2018/12/01 start problem
-									
 									localStorage.market_client=resultArray[1];
-								
-								//	Nazma Azam  2018/12/01 end problem	
+									
 									//alert (resultArray[1])
 									
 								var	m_client_string=localStorage.market_client;
@@ -5418,6 +4667,9 @@ function req_page(){
 	
 function companyWsproduct(k){
 	
+	
+	
+	
 	$("#unschedule_market_combo_id").val(k);
 	
 	$('#show_data').html('')
@@ -5457,10 +4709,10 @@ function companyWsproduct(k){
 		var product_name=''
 		for (var p=0; p < productLength; p++){
 		var productName = proList[p];
-			var product_p='prIdR_'+p.toString()
-			var p_Qt='pQtR_'+p.toString()
-			var c_Qt='cQtR_'+p.toString()
-			var product_info='product_infoR'+p.toString()
+			var product_p='prId_'+p.toString()
+			var p_Qt='pQt_'+p.toString()
+			var c_Qt='cQt_'+p.toString()
+			var product_info='product_info'+p.toString()
 			//var price=productValueArray1.split('<fd>')[3]
 			//var dPrice=productValueArray1.split('<fd>')[4]
 			//var comn=parseFloat(price)-parseFloat(dPrice)
@@ -5528,7 +4780,7 @@ function getCart(){
 	//alert(proList)
 	var prouct_string=''
 	var show_dataList=''
-	//alert ('2')
+	
 	var pr_id=''
 	var pr_name=''
 	var pQty=''
@@ -5538,24 +4790,21 @@ function getCart(){
 	var prouct_stringSubmit=''
 	var totalTotalPrice=0
 	var totalTotalDistPrice=0
-	//alert ('3')
+	
 	//show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:15%">Cartoon</td><td style="width:15%;">Pcs&nbsp;&nbsp;</td><td>Item</td><td align="right">Price</td><td align="center">Comision</td><td ></td></tr></table></li>'
 	//show_data=show_data+'<li style="" ><table style="width:100%"><tr><td style="width:80px">Crtn</td><td style="width:80px;">Pcs&nbsp;&nbsp;</td><td >ProductName</td><td style="width:80px;">TotalPrice</td><td style="width:80px;">&nbsp;&nbsp;Comision</td><td></td></tr></table></li>'
 	for (i=0; i<proList.length; i++){
-		
 		proName=proList[i]
 		pr_id=proName.split('<fd>')[0]
 		
 		pr_name=proName.split('<fd>')[6]
 		
-		var p_Qt='pQtR_'+i.toString()
-		var c_Qt='cQtR_'+i.toString()
-		var product_info='product_infoR'+i.toString()
+		var p_Qt='pQt_'+i.toString()
+		var c_Qt='cQt_'+i.toString()
+		var product_info='product_info'+i.toString()
 			
 		var get_pcs_val=$("#"+p_Qt).val();
 		var get_crtn_val=$("#"+c_Qt).val();
-		
-		
 		
 		var product_info_val=$("#"+product_info).val();
 		var item_carton=product_info_val.split('<fd>')[2]
@@ -5563,10 +4812,12 @@ function getCart(){
 		var dist_price=product_info_val.split('<fd>')[4]
 		
 		
-		var showData_id=''+i.toString()
 		
+		
+		
+		
+		var showData_id=''+i.toString()
 		if(parseInt(get_pcs_val) > 0 || parseInt(get_crtn_val) > 0 ){
-			//alert (get_pcs_val)
 			if (get_pcs_val==''){get_pcs_val=0}
 			if (get_crtn_val==''){get_crtn_val=0}
 			var TotalPcs=(get_crtn_val*parseInt(item_carton))+parseInt(get_pcs_val)
@@ -5583,8 +4834,7 @@ function getCart(){
 		
 			prouct_stringSubmit=prouct_stringSubmit+pr_id+'<fd>'+pr_name+'<fd>'+get_pcs_val+'<fd>'+get_crtn_val+'<fd>'+item_carton+'<fd>'+price+'<fd>'+dist_price+'<rd>'
 			
-			//show_data=show_data+'<input  name="'+showData_id+'" id="'+showData_id+'" type="hidden" value="'+pr_name+'">'
-			
+			show_data=show_data+'<input  name="'+showData_id+'" id="'+showData_id+'" type="hidden" value="'+pr_name+'">'
 			if (localStorage.company_name=='UNILEVER'){
 			//=================Shima 17/10/20108===========
 			//show_data=show_data+'<li style="" ><table style="width:100%"><tr><td colspan="5">'+pr_name+'</td></tr><tr><td  style="width:80px;"><font style="color:#C30; font-size:9px">Ctn:</font>'+get_crtn_val+'</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Pcs:</font>'+get_pcs_val+'&nbsp;&nbsp;</td><td style="width:80px;"><font style="color:#C30; font-size:9px">Amt:</font>'+TotalPrice.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Com:</font>'+Comision.toFixed(2)+'</td><td style="width:80px;">&nbsp;&nbsp;<font style="color:#C30; font-size:9px">Tot:</font>'+TotalShow.toFixed(2)+'</td><td onClick="cancel_pr(\''+showData_id+'\')"><img id="wait_image_login" style="" width="30px;" src="cancel.png" alt=""></td></tr></table></li>'
@@ -5607,32 +4857,27 @@ function getCart(){
 	
 	localStorage.prouct_stringSubmit=prouct_stringSubmit
 	localStorage.show_data=show_data
-	
   	$("#show_data").html('');
 	$('#show_data').html(localStorage.show_data);
 	getLocationInfoSubmit()
 }
 function cartPage(){
+	var prouct_stringSubmit=localStorage.prouct_stringSubmit
+	//alert (prouct_stringSubmit.length)
+	if (prouct_stringSubmit.length >10) {$.afui.loadContent("#cart_page",true,true,'right');}
 	
 	getCart()
-	var prouct_stringSubmit=localStorage.prouct_stringSubmit
-	//alert (localStorage.prouct_stringSubmit)
-	
-	if (prouct_stringSubmit.length >0) {$.afui.loadContent("#cart_page",true,true,'right');}
-	
-	
 
 }
 function cancel_pr(i){
 	
-	//var showData_id=i.toString()
-	//alert(showData_id)
-	var p_Qt='pQtR_'+i.toString()
-	var c_Qt='cQtR_'+i.toString()
+	var showData_id=i.toString()
+	
+	var p_Qt='pQt_'+i.toString()
+	var c_Qt='cQt_'+i.toString()
 	
 	var get_pcs_val=$("#"+p_Qt).val('');
 	var get_crtn_val=$("#"+c_Qt).val('');
-	
 	
 	
 	//var prouct_stringSubmit=localStorage.prouct_stringSubmit;
