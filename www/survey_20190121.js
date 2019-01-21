@@ -3677,7 +3677,7 @@ function area_client_submit_data(){
 			success: function(result){	
 				if (result=='Success'){
 					//alert('Submitted Successful')
-					$("#wait_submit_img").hide();
+					$("#area_client_cart_wait_submit_img").hide();
 					$("#area_client_SaveButton").show();
 					$.afui.loadContent("#msg_page",true,true,'right');
 					//$("#error_area_alert").val(localStorage.base_url+'area_client_dataSubmit?cid='+localStorage.cid+'&rep_id='+localStorage.user_id+'&rep_name='+localStorage.rep_name+'&password='+localStorage.user_pass+'&synccode='+localStorage.synccode+'&comp_Id='+localStorage.company_id+'&comp_name='+localStorage.company_name+'&prouct_string='+localStorage.area_client_prouct_stringSubmit+'&latitude='+localStorage.latitude+'&longitude='+localStorage.longitude+'&client_area_show='+localStorage.client_area_show+'&client_getData='+localStorage.client_getData);
