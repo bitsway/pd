@@ -4036,9 +4036,11 @@ function area_client_cartPage(){
 	var prouct_stringSubmit=localStorage.area_client_prouct_stringSubmit
 	//alert(prouct_stringSubmit.length)
 	if (prouct_stringSubmit.length >0) {
+		
 		$.afui.loadContent("#area_client_cart_page",true,true,'right');
 		$("#area_cart_submitError").html('');
-		$("#area_client_SaveButton").show();}
+		$("#area_client_SaveButton").show();
+		$("#area_client_cart_wait_submit_img").hide();}
 	
 	
 
