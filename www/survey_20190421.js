@@ -19,7 +19,10 @@ $.afui.useOSThemes=false;
 
 /******** jahangirEditedStart16Feb apipath *****************/
 
-//var  apipath ='http://127.0.0.1:8000/pd/'
+//var  apipath ='http://127.0.0.1:8000/acme/medSearch/'
+
+//var  apipath ='http://a007.yeapps.com/acme/medSearch/'
+var  apipath ='http://127.0.0.1:8000/pd/'
 var  apipath_photo ='http://i001.yeapps.com/image_hub/pd_image/pd_image/'
 /******** jahangirEditedEnd16 apipath *****************/
 
@@ -566,7 +569,7 @@ function homePage() {
 			//var button_combo='<li style="border-bottom-style:solid; border-color:#CBE4E4;border-bottom-width:thin"><table width="100%" border="0" id="order_tbl" cellpadding="0" cellspacing="0" style="border-radius:5px;"><tr><td><a href="#" onclick="'+linkPath+'">'+'<input type="submit"   style="width:100%; height:50px; background-color:#09C; color:#FFF; font-size:20px" value="     TEAM REPORT      "   /></a></td></tr></table></li>';
 			
 			
-			var button_combo_show='<table width="100%" border="0" style="background-color:#000"><tr>'
+			var button_combo_show='<table width="100%" border="0" style="background-color:#ffffff"><tr>'
 			button_combo_show=button_combo_show+'<td><div style="width:100%; " onclick="'+linkPath1+'"><img style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="SMC.png"> </div></td>'
 			button_combo_show=button_combo_show+'<td><div style="width:100%; " onclick="'+linkPath2+'"><img  style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="uni_report.png"> </div></td>'
 			button_combo_show=button_combo_show+'<td><div style="width:100%; " onclick="'+linkPath3+'"><img  style="padding-top:0px; padding-bottom:0px;" hight="100px" width="100px" src="Arla.png"> </div></td></tr></table>'
@@ -1634,8 +1637,8 @@ function check_user() {
 	var cid=$("#cid").val().toUpperCase();
 	cid=$.trim(cid);
 	
-   //var apipath_base_photo_dm ='http://127.0.0.1:8000/pd/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
-   var apipath_base_photo_dm ='http://w02.yeapps.com/pd/syncmobile_417_new_ord/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+   // var apipath_base_photo_dm ='http://127.0.0.1:8000/pd/syncmobile_417_new/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
+	var apipath_base_photo_dm ='http://w02.yeapps.com/pd/syncmobile_417_new_ord/dmpath?CID='+cid +'&HTTPPASS=e99business321cba'
 	
 	var user_id=$("#user_id").val();
 	var user_pass=$("#user_pass").val();
@@ -4067,8 +4070,6 @@ function area_client_product_list(){
 
 
 function companyAreaWsproduct(k){
-
-	
 	localStorage.brand_combo = ''
 	//var re = $('#client_area_requisition_combo_id_lv').val()
 	//alert(re)
@@ -4076,7 +4077,7 @@ function companyAreaWsproduct(k){
 	//alert(company_combo_list_str)
 	$("#area_market_combo_id").val(k);
 //	nazma 2018/12/09
-	$('#area_show_data').html('')
+	//$('#area_show_data').html('')
 	var input_id=k.toString()
 	
 	localStorage.comp_index=input_id
@@ -4098,7 +4099,7 @@ function companyAreaWsproduct(k){
 	//alert(localStorage.company_id)
 	//alert (localStorage.company_name)
 	//$("#area_cNameCart").html(localStorage.company_name);
-	//2alert (localStorage.company_name)
+	//alert (localStorage.company_name)
 
 
 	if(input_id=='0'){
@@ -5497,7 +5498,7 @@ function companyWsproduct(k){
 	
 	//alert(brand_Str)
 	brand_Str=brand_StrM.split('<'+company_name+'>')[1].split('<rd>')[0]
-	
+	//alert(brand_Str)
 	br_brnStrList=brand_Str.split('<fd>')
 	
 	$('#brand_list').empty();
@@ -9393,32 +9394,6 @@ function searchClient() {
 	
 }
 
-
-//======Jolly 21_04_19 ========
-function searchAreaClientProduct() {
-	var filter  = $("#area_client_brand_list").val().toUpperCase();
-	//alert(filter)
-	
-	 var lis =document.getElementById("area_client_product_ul_list").getElementsByTagName("li");
-	
-	for (var i = 0; i < lis.length; i++) {
-		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
-		
-		if (name.toUpperCase().indexOf(filter) == 0)
-			lis[i].style.display = 'list-item';
-		
-		else
-			lis[i].style.display = 'none';
-		
-		
-	}
-	
-	
-}
-
-//======Jolly 21_04_19 ========
-
-
 function searchProduct() {
 	var filter  = $("#product_combo_id").val().toUpperCase();
 	
@@ -9426,7 +9401,7 @@ function searchProduct() {
 	//alert (lis);
 	for (var i = 0; i < lis.length; i++) {
 		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
-		
+		alert (name)
 		if (name.toUpperCase().indexOf(filter) == 0)
 			lis[i].style.display = 'list-item';
 		
@@ -9444,12 +9419,10 @@ function searchbrand() {
 	var filterG  = $("#brand_list").val().toUpperCase();
 	var filter='|'+filterG
 	
-	
 	 var lis =document.getElementById("product_ul_list").getElementsByTagName("li");
-	
+	 
 
 	for (var i = 0; i < lis.length; i++) {
-		
 		var name = lis[i].getElementsByClassName('name')[0].innerHTML;
 		
 		if (name.indexOf(filter) != -1)
